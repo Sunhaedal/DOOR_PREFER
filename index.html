@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문선호 | 포트폴리오</title>
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #212529;
+            --text-muted: #6c757d;
+            --accent-color: #2563eb;
+            --border-color: #e9ecef;
+            --tag-bg: #eff6ff;
+            --tag-color: #1d4ed8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Header / Profile */
+        header {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .contact-info a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        /* Timeline Items (Education, Experience) */
+        .item {
+            margin-bottom: 1.5rem;
+        }
+
+        .item:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 0.25rem;
+        }
+
+        .item-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .item-period {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .item-role {
+            font-size: 0.95rem;
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Project Card Details */
+        .project-meta {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 0.5rem 0 1rem 0;
+        }
+
+        .tag {
+            background-color: var(--tag-bg);
+            color: var(--tag-color);
+            font-size: 0.8rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        ul {
+            list-style-position: inside;
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        li {
+            margin-bottom: 0.25rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+            header, section {
+                padding: 1.5rem;
+            }
+            .item-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>문선호</h1>
+            <p class="subtitle">기발한 생각하는 기획자</p>
+            <div class="contact-info">
+                <span>📧 이메일: <a href="mailto:0416moon@naver.com">0416moon@naver.com</a></span>
+            </div>
+        </header>
+
+        <section>
+            <h2>학력</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">유한대학교</span>
+                    <span class="item-period">2021.03 ~ 현재</span>
+                </div>
+                <p class="item-role">게임콘텐츠전공</p>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">환일고등학교</span>
+                    <span class="item-period">2018.03 ~ 2021.02</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>경력</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">크래프톤</span>
+                    <span class="item-period">2026.03 ~ 2026.03</span>
+                </div>
+                <p class="item-role">QA 게임 테스트</p>
+                <ul>
+                    <li>AI와 팀을 이루어 'PUBG: 배틀그라운드' 플레이 및 대화 수행</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>프로젝트 경험</h2>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Blind Echo</span>
+                    <span class="item-period">2026.08 ~ 현재</span>
+                </div>
+                <p class="item-role">기획 / 문서 (역할: 서브 기획, QA, 문서 정리)</p>
+                <div class="project-meta">
+                    <span class="tag">Unity</span>
+                    <span class="tag">C#</span>
+                    <span class="tag">Notion</span>
+                </div>
+                <ul>
+                    <li>게임 카테고리 기획</li>
+                    <li>Notion 문서 제작</li>
+                </ul>
+            </div>
+
+            <hr style="border: none; border-top: 1px solid var(--border-color); margin: 1.5rem 0;">
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">내 약국엔 정상이 없다 (Project pharmacy)</span>
+                    <span class="item-period">2026.03 ~ 2026.06</span>
+                </div>
+                <p class="item-role">기획 / 문서 (역할: 기획 및 사운드 제작)</p>
+                <div class="project-meta">
+                    <span class="tag">Unity</span>
+                    <span class="tag">C#</span>
+                    <span class="tag">Notion</span>
+                </div>
+                <ul>
+                    <li>게임 플레이 설계에 대한 기획</li>
+                    <li>각 장면에 맞는 사운드 제작</li>
+                </ul>
+            </div>
+
+            <hr style="border: none; border-top: 1px solid var(--border-color); margin: 1.5rem 0;">
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Last Warrior Standing</span>
+                    <span class="item-period">2025.08 ~ 2025.12</span>
+                </div>
+                <p class="item-role">기타 (역할: 보드게임 제작 및 테스트)</p>
+                <div class="project-meta">
+                    <span class="tag">3D 프린터</span>
+                    <span class="tag">폼보드</span>
+                </div>
+                <ul>
+                    <li>보드게임 판, 카드 제작</li>
+                    <li>보드게임 테스트 및 캐릭터 밸런싱</li>
+                </ul>
+            </div>
+
+            <hr style="border: none; border-top: 1px solid var(--border-color); margin: 1.5rem 0;">
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">칠가이의 모험</span>
+                    <span class="item-period">2025.08 ~ 2025.12</span>
+                </div>
+                <p class="item-role">기획 / 문서 (역할: 게임 기획 및 문서)</p>
+                <div class="project-meta">
+                    <span class="tag">Unity</span>
+                    <span class="tag">C#</span>
+                    <span class="tag">Figma</span>
+                    <span class="tag">Notion</span>
+                </div>
+                <ul>
+                    <li>게임, 스토리 기획</li>
+                    <li>PBL 및 PPT 문서 작업</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
