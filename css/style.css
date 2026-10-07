@@ -1,0 +1,92 @@
+:root{
+  --bg:#0F0C16;
+  --panel:#1B1526;
+  --line:#322A44;
+  --text:#EDE6F5;
+  --muted:#A79BC2;
+  --pumpkin:#E8752B;
+  --ember:#FFB25E;
+  --pink:#F4A3C0;
+  --mint:#8FD9C3;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Pretendard','Inter',-apple-system,'Noto Sans KR',sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.topnav{position:sticky;top:0;z-index:10;background:rgba(15,12,22,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topnav-inner{max-width:960px;margin:0 auto;padding:14px 24px;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.topnav .brand{font-family:'Cinzel',serif;font-weight:700;margin-right:auto;text-decoration:none}
+.topnav a.link{color:var(--muted);text-decoration:none;font-size:.95rem}
+.topnav a.link:hover{color:var(--text)}
+
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+
+.intro{padding:72px 0 40px}
+.intro h1{font-family:'Cinzel','Noto Serif KR',serif;font-size:clamp(1.9rem,4.5vw,3rem);line-height:1.25;margin:0 0 16px}
+.intro p{color:var(--muted);max-width:60ch;margin:0}
+.project-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:36px}
+.project-links a{display:block;text-decoration:none;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:20px 22px}
+.project-links a:hover{border-color:var(--muted)}
+.project-links .t{display:block;font-weight:700;font-size:1.05rem;margin-bottom:4px}
+.project-links .d{color:var(--muted);font-size:.92rem}
+.project-links .a1 .t{color:var(--ember)}
+.project-links .a2 .t{color:var(--pink)}
+
+.part{padding:72px 0;border-top:1px solid var(--line)}
+.part h2{font-family:'Cinzel','Noto Serif KR',serif;font-size:clamp(1.5rem,3.2vw,2.1rem);margin:0 0 8px}
+.part .sub{color:var(--muted);margin:0 0 36px;max-width:62ch}
+.part h3{font-size:1.05rem;margin:36px 0 10px}
+.part p,.part li{max-width:66ch}
+.part ul{padding-left:22px}
+
+/* Part 1 : 미메시스 */
+#mimesis h2,#mimesis h3{color:var(--ember)}
+.keyart{margin:0 0 40px}
+.keyart img{width:100%;height:auto;display:block;border-radius:6px}
+.keyart figcaption{color:var(--muted);font-size:.82rem;margin-top:8px}
+.concept{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--pumpkin);border-radius:4px;padding:22px 26px}
+.concept .name{font-family:'Cinzel',serif;font-size:1.2rem;color:var(--pumpkin);margin:0 0 8px}
+.concept p:last-child{margin:0}
+table.items{width:100%;border-collapse:collapse;margin:14px 0;font-size:.95rem}
+table.items th,table.items td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+table.items th{color:var(--ember);font-weight:600}
+table.items td:first-child{color:var(--muted);white-space:nowrap}
+table.items td:nth-child(2){font-weight:600;white-space:nowrap}
+.effects{list-style:none;padding:0;counter-reset:e}
+.effects li{counter-increment:e;position:relative;padding-left:34px;margin-bottom:20px}
+.effects li::before{content:counter(e);position:absolute;left:0;top:0;font-family:'Cinzel',serif;color:var(--pumpkin);font-weight:700}
+.effects b{display:block;margin-bottom:2px}
+
+/* Part 2 : 트릭컬 */
+#trickcal h2,#trickcal h3{color:var(--pink)}
+.matrix{border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-top:8px}
+.matrix .row{display:grid;grid-template-columns:150px 1fr 1fr;border-top:1px solid var(--line)}
+.matrix .row:first-child{border-top:none}
+.matrix .head{background:var(--panel);font-weight:700}
+.matrix .head div:nth-child(2){color:var(--pink)}
+.matrix .head div:nth-child(3){color:var(--mint)}
+.matrix .row>div{padding:16px 18px}
+.matrix .cat{color:var(--muted);font-weight:600;border-right:1px solid var(--line)}
+.matrix .mine{border-right:1px solid var(--line)}
+.matrix b{display:block;margin-bottom:4px}
+.matrix .empty{color:var(--line)}
+.matrix .row>div p{margin:0;color:var(--muted);font-size:.93rem}
+.note{margin-top:18px;color:var(--muted);font-size:.9rem;border-left:3px solid var(--line);padding-left:14px}
+.sources{margin-top:36px;font-size:.88rem;color:var(--muted)}
+.sources a{color:var(--mint)}
+.sources ul{padding-left:20px}
+
+@media (max-width:700px){
+  .matrix .row{grid-template-columns:1fr}
+  .matrix .head{display:none}
+  .matrix .cat{border-right:none;background:var(--panel)}
+  .matrix .mine{border-right:none}
+  .matrix .mine::before,.matrix .extra::before{display:block;font-size:.8rem;font-weight:700;margin-bottom:6px}
+  .matrix .mine::before{content:'내가 찾은 재미요소';color:var(--pink)}
+  .matrix .extra::before{content:'추가로 찾은 재미요소';color:var(--mint)}
+  table.items td:nth-child(n){white-space:normal}
+}
+footer{border-top:1px solid var(--line);padding:32px 0 56px;color:var(--muted);font-size:.85rem}

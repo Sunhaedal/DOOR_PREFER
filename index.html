@@ -1,917 +1,413 @@
-<title>문선호</title>
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>문선호 포트폴리오</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
 <style>
-  :root {
-    --bg: #F9FAFB;
-    --surface: #FFFFFF;
-    --surface-alt: #F3F4F6;
-    --ink: #111827;
-    --ink-soft: #6B7280;
-    --line: #EBEDF2;
-    --accent: #4F46E5;
-    --accent-deep: #4338CA;
-    --accent-ink: #FFFFFF;
-    --accent-soft: #EEF2FF;
-    --shadow: rgba(79, 70, 229, 0.14);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #131220;
-      --surface: #1C1B2B;
-      --surface-alt: #232236;
-      --ink: #EDEDF5;
-      --ink-soft: #A5A3BD;
-      --line: #2C2B41;
-      --accent: #818CF8;
-      --accent-deep: #A5B4FC;
-      --accent-ink: #131220;
-      --accent-soft: rgba(129, 140, 248, 0.16);
-      --shadow: rgba(0, 0, 0, 0.45);
-    }
-  }
-
-  :root[data-theme="dark"] {
-    --bg: #131220;
-    --surface: #1C1B2B;
-    --surface-alt: #232236;
-    --ink: #EDEDF5;
-    --ink-soft: #A5A3BD;
-    --line: #2C2B41;
-    --accent: #818CF8;
-    --accent-deep: #A5B4FC;
-    --accent-ink: #131220;
-    --accent-soft: rgba(129, 140, 248, 0.16);
-    --shadow: rgba(0, 0, 0, 0.45);
-  }
-
-  * { box-sizing: border-box; }
-
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: "Plus Jakarta Sans", "Noto Sans KR", -apple-system, "Segoe UI", sans-serif;
-    line-height: 1.65;
-    padding-inline: 16px;
-    padding-block: 2.5rem 4rem;
-  }
-
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-
-  .wrap { max-width: 760px; margin: 0 auto; }
-
-  .eyebrow {
-    font-size: 0.75rem;
-    letter-spacing: 0.18em;
-    color: var(--accent-deep);
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-
-  /* ---------- Header ---------- */
-  header {
-    background: var(--surface);
-    border-radius: 24px;
-    padding: 2.25rem 2rem;
-    box-shadow: 0 16px 40px -20px var(--shadow), 0 2px 8px -2px var(--shadow);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1.5rem;
-    justify-content: space-between;
-    transition: box-shadow 0.25s ease, transform 0.25s ease;
-  }
-
-  header:hover {
-    box-shadow: 0 20px 48px -18px var(--shadow), 0 2px 8px -2px var(--shadow);
-    transform: translateY(-2px);
-  }
-
-  .id-block h1 {
-    font-family: "Plus Jakarta Sans", "Noto Sans KR", sans-serif;
-    font-weight: 800;
-    font-size: clamp(1.9rem, 6vw, 2.6rem);
-    letter-spacing: -0.01em;
-    margin: 0.2rem 0 0.4rem;
-    text-wrap: balance;
-  }
-
-  .id-block .subtitle {
-    font-size: 1.05rem;
-    color: var(--ink-soft);
-    font-weight: 500;
-  }
-
-  .contact {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--accent-soft);
-    color: var(--accent-deep);
-    padding: 0.55rem 1rem;
-    border-radius: 999px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .contact:hover,
-  .contact:focus-visible {
-    background: var(--accent);
-    color: var(--accent-ink);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px -10px var(--shadow);
-    outline: none;
-  }
-
-  /* ---------- Tab nav ---------- */
-  nav.tabs {
-    position: sticky;
-    top: env(safe-area-inset-top, 0px);
-    z-index: 5;
-    display: flex;
-    gap: 0.4rem;
-    margin: 1.75rem 0 1.75rem;
-    padding: 0.4rem;
-    background: var(--surface);
-    border-radius: 18px;
-    box-shadow: 0 12px 30px -16px var(--shadow), 0 2px 6px -2px var(--shadow);
-  }
-
-  nav.tabs button {
-    flex: 1;
-    appearance: none;
-    border: none;
-    background: transparent;
-    color: var(--ink-soft);
-    font-family: inherit;
-    font-size: 0.95rem;
-    font-weight: 700;
-    padding: 0.75rem 0.5rem;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
-  }
-
-  nav.tabs button:hover { background: var(--accent-soft); color: var(--accent-deep); }
-
-  nav.tabs button:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-
-  nav.tabs button[aria-selected="true"] {
-    background: var(--accent);
-    color: var(--accent-ink);
-    box-shadow: 0 10px 20px -8px var(--shadow);
-  }
-
-  nav.tabs button[aria-selected="true"]:hover { background: var(--accent); color: var(--accent-ink); }
-
-  /* ---------- Panels ---------- */
-  .panel {
-    display: none;
-    animation: rise 0.35s ease both;
-  }
-
-  .panel.is-active { display: block; }
-
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .panel { animation: none; }
-  }
-
-  section.card {
-    background: var(--surface);
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 14px 32px -20px var(--shadow), 0 2px 8px -3px var(--shadow);
-    margin-bottom: 1.5rem;
-    transition: box-shadow 0.25s ease, transform 0.25s ease;
-  }
-
-  section.card:hover {
-    box-shadow: 0 18px 40px -18px var(--shadow), 0 2px 8px -3px var(--shadow);
-    transform: translateY(-2px);
-  }
-
-  section.card h2 {
-    font-family: "Plus Jakarta Sans", "Noto Sans KR", sans-serif;
-    font-weight: 800;
-    font-size: 1.3rem;
-    letter-spacing: -0.01em;
-    margin: 0 0 1.25rem;
-    display: flex;
-    align-items: center;
-    gap: 0.55rem;
-  }
-
-  section.card h2::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-  }
-
-  .item { margin-bottom: 1.4rem; }
-  .item:last-child { margin-bottom: 0; }
-
-  .item-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-bottom: 0.2rem;
-  }
-
-  .item-title { font-size: 1.05rem; font-weight: 700; }
-
-  .item-period {
-    font-size: 0.8rem;
-    color: var(--ink-soft);
-    font-weight: 500;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .item-role {
-    font-size: 0.92rem;
-    color: var(--accent-deep);
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-
-  .project-meta {
-    display: flex;
-    gap: 0.4rem;
-    flex-wrap: wrap;
-    margin: 0.5rem 0 0.9rem;
-  }
-
-  .tag {
-    background: var(--accent-soft);
-    color: var(--accent-deep);
-    font-size: 0.75rem;
-    padding: 0.22rem 0.65rem;
-    border-radius: 999px;
-    font-weight: 700;
-  }
-
-  ul { margin: 0; padding-left: 1.1rem; font-size: 0.93rem; }
-  li { margin-bottom: 0.3rem; }
-  li::marker { color: var(--accent); }
-
-  .divider {
-    border: none;
-    border-top: 1px solid var(--line);
-    margin: 1.4rem 0;
-  }
-
-  /* ---------- Empty states ---------- */
-  .empty-state {
-    background: var(--surface-alt);
-    border: 1.5px dashed var(--line);
-    border-radius: 20px;
-    padding: 3.5rem 2rem;
-    text-align: center;
-    color: var(--ink-soft);
-  }
-
-  .empty-state .glyph {
-    font-size: 2.4rem;
-    display: block;
-    margin-bottom: 0.9rem;
-  }
-
-  .empty-state strong {
-    display: block;
-    color: var(--ink);
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 0.4rem;
-  }
-
-  .empty-state p { margin: 0; font-size: 0.9rem; }
-
-  @media (max-width: 600px) {
-    header, section.card { padding: 1.5rem; }
-    .item-header { flex-direction: column; align-items: flex-start; }
-  }
-
-  /* ---------- Game play history table ---------- */
-  .history-note {
-    background: var(--accent-soft);
-    color: var(--accent-deep);
-    font-size: 0.85rem;
-    font-weight: 500;
-    padding: 0.75rem 1rem;
-    border-radius: 12px;
-    margin: 0 0 1.25rem;
-    max-width: none;
-  }
-
-  .history-table-wrap {
-    overflow-x: auto;
-    border-radius: 16px;
-    box-shadow: 0 14px 32px -20px var(--shadow), 0 2px 8px -3px var(--shadow);
-  }
-
-  .history-table {
-    width: 100%;
-    min-width: 920px;
-    border-collapse: collapse;
-    font-size: 0.88rem;
-    background: var(--surface);
-  }
-
-  .history-table th {
-    text-align: left;
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--accent-deep);
-    background: var(--surface-alt);
-    padding: 0.8rem 0.9rem;
-    border-bottom: 2px solid var(--line);
-    white-space: nowrap;
-  }
-
-  .history-table td {
-    padding: 0.7rem 0.9rem;
-    border-bottom: 1px solid var(--line);
-    vertical-align: top;
-    color: var(--ink);
-  }
-
-  .history-table tbody tr:hover { background: var(--accent-soft); }
-
-  .history-table .col-rank {
-    font-variant-numeric: tabular-nums;
-    color: var(--ink-soft);
-    font-weight: 700;
-    text-align: center;
-  }
-
-  .history-table .col-name { font-weight: 700; white-space: nowrap; }
-  .history-table .col-desc { min-width: 220px; }
-
-  .history-table .genre-chip {
-    display: inline-block;
-    background: var(--accent-soft);
-    color: var(--accent-deep);
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 0.22rem 0.65rem;
-    border-radius: 999px;
-    white-space: nowrap;
-  }
-
-  .history-table td[contenteditable] {
-    min-width: 90px;
-    border-radius: 8px;
-    cursor: text;
-    transition: background 0.15s ease, box-shadow 0.15s ease;
-  }
-
-  .history-table td[contenteditable]:hover { background: var(--accent-soft); }
-
-  .history-table td[contenteditable]:focus {
-    outline: none;
-    background: var(--surface);
-    box-shadow: 0 0 0 2px var(--accent) inset;
-  }
-
-  .history-table td[contenteditable]:empty::before {
-    content: attr(data-placeholder);
-    color: var(--ink-soft);
-  }
-
-  /* ---------- Event doc (사이트 톤과 통일) ---------- */
-  .event-doc {
-    background: var(--bg);
-    border-radius: 20px;
-    padding: 2rem;
-    color: var(--ink);
-  }
-
-  .event-doc__eyebrow {
-    font-size: 0.75rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 700;
-    margin: 0 0 0.6rem;
-  }
-
-  .event-doc__title {
-    font-family: "Plus Jakarta Sans", "Noto Sans KR", sans-serif;
-    font-size: clamp(1.5rem, 4vw, 2.1rem);
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    margin: 0 0 0.75rem;
-    text-wrap: balance;
-    color: var(--ink);
-  }
-
-  .event-doc__lede {
-    color: var(--ink-soft);
-    font-size: 1rem;
-    max-width: 60ch;
-    margin: 0 0 1.5rem;
-  }
-
-  .event-doc__nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .event-nav-btn {
-    appearance: none;
-    border: none;
-    background: var(--surface);
-    color: var(--ink-soft);
-    font-family: inherit;
-    font-size: 0.82rem;
-    font-weight: 700;
-    padding: 0.45rem 0.9rem;
-    border-radius: 999px;
-    text-decoration: none;
-    cursor: pointer;
-    box-shadow: 0 4px 12px -6px var(--shadow);
-    transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
-  }
-
-  .event-nav-btn:hover,
-  .event-nav-btn:focus-visible {
-    background: var(--accent);
-    color: var(--accent-ink);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px -8px var(--shadow);
-    outline: none;
-  }
-
-  .event-block {
-    scroll-margin-top: 5.5rem;
-    background: var(--surface);
-    border-radius: 16px;
-    padding: 1.75rem 1.75rem 2rem;
-    margin-top: 1.25rem;
-    box-shadow: 0 14px 32px -22px var(--shadow), 0 2px 8px -3px var(--shadow);
-    transition: box-shadow 0.25s ease, transform 0.25s ease;
-  }
-
-  .event-block:hover {
-    box-shadow: 0 18px 40px -18px var(--shadow), 0 2px 8px -3px var(--shadow);
-    transform: translateY(-2px);
-  }
-
-  .event-block__num {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: var(--accent-soft);
-    color: var(--accent-deep);
-    font-size: 0.78rem;
-    font-weight: 800;
-    font-variant-numeric: tabular-nums;
-    margin-bottom: 0.75rem;
-  }
-
-  .event-block h3 {
-    font-family: "Plus Jakarta Sans", "Noto Sans KR", sans-serif;
-    font-size: 1.2rem;
-    font-weight: 800;
-    margin: 0 0 0.9rem;
-    color: var(--ink);
-  }
-
-  .event-block h4 {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--accent-deep);
-    margin: 1.4rem 0 0.5rem;
-  }
-
-  .event-block p { margin: 0 0 0.85rem; max-width: 66ch; color: var(--ink); }
-  .event-block ul { margin: 0 0 0.85rem; padding-left: 1.2rem; }
-  .event-block li { margin-bottom: 0.45rem; }
-  .event-block li::marker { color: var(--accent); }
-
-  .event-concept {
-    background: var(--accent-soft);
-    border-left: 3px solid var(--accent);
-    border-radius: 10px;
-    padding: 1.2rem 1.4rem;
-  }
-
-  .event-concept__name {
-    font-weight: 800;
-    color: var(--accent-deep);
-    margin: 0 0 0.4rem;
-    font-size: 1.05rem;
-  }
-
-  .event-table-wrap { overflow-x: auto; margin: 0.5rem 0; }
-
-  .event-table {
-    width: 100%;
-    min-width: 480px;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-  }
-
-  .event-table th {
-    text-align: left;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--accent-deep);
-    padding: 0.7rem 0.8rem;
-    border-bottom: 2px solid var(--line);
-  }
-
-  .event-table td {
-    padding: 0.75rem 0.8rem;
-    border-bottom: 1px solid var(--line);
-    vertical-align: top;
-  }
-
-  .event-table tbody tr { transition: background 0.2s ease; }
-  .event-table tbody tr:hover { background: var(--accent-soft); }
-
-  .event-table .is-old { color: var(--ink-soft); white-space: nowrap; }
-  .event-table .is-new { color: var(--ink); font-weight: 700; white-space: nowrap; }
-
-  .event-effects {
-    list-style: none;
-    counter-reset: ev-eff;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 1rem;
-  }
-
-  .event-effects li {
-    counter-increment: ev-eff;
-    position: relative;
-    padding-left: 2.4rem;
-  }
-
-  .event-effects li::before {
-    content: counter(ev-eff);
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: var(--accent-ink);
-    font-size: 0.78rem;
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .event-effects strong {
-    display: block;
-    color: var(--ink);
-    margin-bottom: 0.2rem;
-  }
-
-  @media (max-width: 600px) {
-    .event-doc { padding: 1.4rem; }
-    .event-block { padding: 1.4rem 1.2rem 1.6rem; }
-  }
+/* Layout: 좌측 고정 프로필 패널 + 우측 스크롤 본문(경험 / 프로젝트 / 과제). 모바일에선 프로필 → 상단 고정 탭 → 본문 순으로 쌓임 */
+:root{
+  --bg:#ECEFF4;
+  --surface:#FFFFFF;
+  --ink:#131926;
+  --muted:#5A6476;
+  --line:#D2D8E2;
+  --accent:#2B45E6;
+  --accent-soft:#E2E7FF;
+  --font-display:"Black Han Sans","IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --font-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono","IBM Plex Sans KR",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E121A;--surface:#161C27;--ink:#E7EBF2;--muted:#98A2B4;--line:#283041;--accent:#8496FF;--accent-soft:#1E2747;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E121A;--surface:#161C27;--ink:#E7EBF2;--muted:#98A2B4;--line:#283041;--accent:#8496FF;--accent-soft:#1E2747;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px;padding-block:40px 80px;display:grid;grid-template-columns:300px minmax(0,1fr);gap:56px}
+
+/* ---------- 프로필 패널 ---------- */
+.profile{position:sticky;top:calc(env(safe-area-inset-top,0px) + 40px);align-self:start;display:flex;flex-direction:column;gap:28px}
+.role{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.name{font-family:var(--font-display);font-weight:400;font-size:64px;line-height:1;margin:8px 0 0;letter-spacing:-.01em}
+.tagline{margin:14px 0 0;font-size:17px;font-weight:500}
+.mail{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-family:var(--font-mono);font-size:13px;color:var(--muted)}
+.mail span{user-select:all}
+.copy{font:inherit;font-size:12px;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:4px;padding:2px 8px;cursor:pointer}
+.copy:hover{border-color:var(--accent);color:var(--accent)}
+.copy:focus-visible,.nav a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.nav{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.nav a{display:flex;justify-content:space-between;align-items:baseline;padding:12px 2px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--muted);font-weight:600;transition:color .15s,padding .15s}
+.nav a small{font-family:var(--font-mono);font-weight:400;font-size:11px;letter-spacing:.1em}
+.nav a:hover{color:var(--ink)}
+.nav a.on{color:var(--accent);padding-left:10px}
+
+.skills{display:flex;flex-direction:column;gap:10px}
+.label{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--font-mono);font-size:12px;padding:3px 9px;border:1px solid var(--line);border-radius:3px;background:var(--surface);white-space:nowrap}
+
+/* ---------- 본문 섹션 ---------- */
+main{min-width:0;display:flex;flex-direction:column;gap:88px}
+.sec-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding-bottom:16px;border-bottom:2px solid var(--ink);margin-bottom:8px}
+.sec-head h2{font-family:var(--font-display);font-weight:400;font-size:40px;line-height:1;margin:0}
+.sec-head .en{font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;color:var(--muted)}
+.sec-head .count{margin-left:auto;font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.sub{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--accent);margin:36px 0 4px;text-transform:uppercase}
+
+/* 타임라인 행: 기간 | 내용 */
+.row{display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;padding:20px 0;border-bottom:1px solid var(--line)}
+.period{font-family:var(--font-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:3px}
+.row h3{margin:0;font-size:18px;font-weight:700;text-wrap:balance}
+.row .meta{margin:2px 0 0;color:var(--muted)}
+.row ul{margin:10px 0 0;padding-left:18px}
+.row li{margin:2px 0}
+
+/* 프로젝트 카드 */
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:24px;display:flex;flex-direction:column;gap:14px;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card.feature{grid-column:1/-1}
+.card-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.card h3{margin:0;font-size:20px;font-weight:700;text-wrap:balance}
+.card h3 small{display:block;font-size:13px;font-weight:500;color:var(--muted);margin-top:2px}
+.status{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;padding:2px 8px;border-radius:3px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.desc{margin:0;color:var(--ink)}
+dl.spec{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;font-size:14px}
+dl.spec dt{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding-top:2px}
+dl.spec dd{margin:0}
+.card ul{margin:0;padding-left:18px}
+.card .chips{margin-top:auto}
+
+/* 과제 문서 */
+.doc{background:var(--surface);border:1px solid var(--line);border-radius:6px;margin-top:24px;overflow:hidden}
+.doc-head{padding:28px 28px 22px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+.doc-head h3{margin:0;font-size:24px;font-weight:700;text-wrap:balance}
+.doc-head p{margin:0;color:var(--muted);max-width:62ch}
+.doc-body{padding:8px 28px 28px}
+.part{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:22px 0;border-bottom:1px solid var(--line)}
+.part:last-child{border-bottom:0}
+.no{font-family:var(--font-mono);font-size:13px;color:var(--accent);padding-top:3px}
+.part h4{margin:0 0 10px;font-size:17px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:16px}
+.fact{border-left:2px solid var(--accent);padding:2px 0 2px 12px}
+.fact b{display:block;font-size:12px;font-family:var(--font-mono);font-weight:500;color:var(--muted);letter-spacing:.06em}
+.table-wrap{overflow-x:auto;margin:6px 0 14px}
+table{border-collapse:collapse;width:100%;min-width:480px;font-size:14px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;color:var(--muted);font-weight:500;text-transform:uppercase}
+.reskin td:nth-child(2){font-weight:600;color:var(--accent);white-space:nowrap}
+.fun td:first-child{font-weight:600;white-space:nowrap}
+.fun td:last-child{color:var(--muted)}
+.loop{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:4px 0 14px;font-size:14px}
+.loop span{padding:6px 12px;border:1px solid var(--line);border-radius:4px;background:var(--bg)}
+.loop i{font-style:normal;color:var(--accent);font-family:var(--font-mono)}
+.doc+.doc{margin-top:20px}
+.effects{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.effects li{padding:14px 16px;border:1px solid var(--line);border-radius:4px}
+.effects b{display:block;margin-bottom:2px}
+.effects span{color:var(--muted);font-size:14px}
+.part p{margin:0 0 8px;max-width:65ch}
+
+footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:20px}
+
+/* ---------- 반응형 ---------- */
+@media (max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:32px;padding-block:28px 64px}
+  .profile{position:static}
+  .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;flex-direction:row;background:var(--bg);border-top:0;border-bottom:1px solid var(--line);margin-inline:-20px;padding-inline:20px}
+  .nav a{flex:1;justify-content:center;border-bottom:2px solid transparent;padding:12px 4px}
+  .nav a small{display:none}
+  .nav a.on{padding-left:4px;border-bottom-color:var(--accent)}
+  .profile{display:contents}
+  .profile>.intro{order:0}
+}
+@media (max-width:640px){
+  .name{font-size:52px}
+  .sec-head h2{font-size:32px}
+  .row{grid-template-columns:minmax(0,1fr);gap:4px}
+  .projects{grid-template-columns:minmax(0,1fr)}
+  .effects{grid-template-columns:minmax(0,1fr)}
+  .doc-head,.doc-body{padding-inline:18px}
+  .part{grid-template-columns:minmax(0,1fr);gap:4px}
+}
 </style>
 
+</head>
+<body>
 <div class="wrap">
-
-  <header>
-    <div class="id-block">
-      <span class="eyebrow">Game Planner</span>
-      <h1>문선호</h1>
-      <p class="subtitle">기발한 생각하는 기획자</p>
+  <aside class="profile">
+    <div class="intro">
+      <div class="role">Game Planner</div>
+      <h1 class="name">문선호</h1>
+      <p class="tagline">기발한 생각을 기획서로 옮기는 기획자</p>
     </div>
-    <a class="contact" href="mailto:0416moon@naver.com">📧 0416moon@naver.com</a>
-  </header>
-
-  <nav class="tabs" role="tablist" aria-label="포트폴리오 섹션">
-    <button role="tab" id="tab-portfolio" aria-controls="panel-portfolio" aria-selected="true">포트폴리오</button>
-    <button role="tab" id="tab-gameplay" aria-controls="panel-gameplay" aria-selected="false">게임 플레이 이력</button>
-    <button role="tab" id="tab-event" aria-controls="panel-event" aria-selected="false">게임 이벤트 기획</button>
-  </nav>
-
-  <div id="panel-portfolio" class="panel is-active" role="tabpanel" aria-labelledby="tab-portfolio">
-
-    <section class="card">
-      <h2>학력</h2>
-      <div class="item">
-        <div class="item-header">
-          <span class="item-title">유한대학교</span>
-          <span class="item-period">2021.03 ~ 현재</span>
-        </div>
-        <p class="item-role">게임콘텐츠전공</p>
-      </div>
-      <div class="item">
-        <div class="item-header">
-          <span class="item-title">환일고등학교</span>
-          <span class="item-period">2018.03 ~ 2021.02</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>경력</h2>
-      <div class="item">
-        <div class="item-header">
-          <span class="item-title">크래프톤</span>
-          <span class="item-period">2026.03 ~ 2026.03</span>
-        </div>
-        <p class="item-role">QA 게임 테스트</p>
-        <ul>
-          <li>AI와 팀을 이루어 'PUBG: 배틀그라운드' 플레이 및 대화 수행</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>프로젝트 경험</h2>
-
-      <div class="item">
-        <div class="item-header">
-          <span class="item-title">Blind Echo</span>
-          <span class="item-period">2026.08 ~ 현재</span>
-        </div>
-        <p class="item-role">기획 / 문서 (역할: 서브 기획, QA, 문서 정리)</p>
-        <div class="project-meta">
-          <span class="tag">Unity</span>
-          <span class="tag">C#</span>
-          <span class="tag">Notion</span>
-        </div>
-        <ul>
-          <li>게임 카테고리 기획</li>
-          <li>Notion 문서 제작</li>
-        </ul>
-      </div>
-
-      <hr class="divider">
-
-      <div class="item">
-        <div class="item-header">
-          <span class="item-title">내 약국엔 정상이 없다 (Project pharmacy)</span>
-          <span class="item-period">2026.03 ~ 2026.06</span>
-        </div>
-        <p class="item-role">기획 / 문서 (역할: 기획 및 사운드 제작)</p>
-        <div class="project-meta">
-          <span class="tag">Unity</span>
-          <span class="tag">C#</span>
-          <span class="tag">Notion</span>
-        </div>
-        <ul>
-          <li>게임 플레이 설계에 대한 기획</li>
-          <li>각 장면에 맞는 사운드 제작</li>
-        </ul>
-      </div>
-
-      <hr class="divider">
-
-      <div class="item">
-        <div class="item-header">
-          <span class="item-title">Last Warrior Standing</span>
-          <span class="item-period">2025.08 ~ 2025.12</span>
-        </div>
-        <p class="item-role">기타 (역할: 보드게임 제작 및 테스트)</p>
-        <div class="project-meta">
-          <span class="tag">3D 프린터</span>
-          <span class="tag">폼보드</span>
-        </div>
-        <ul>
-          <li>보드게임 판, 카드 제작</li>
-          <li>보드게임 테스트 및 캐릭터 밸런싱</li>
-        </ul>
-      </div>
-
-      <hr class="divider">
-
-      <div class="item">
-        <div class="item-header">
-          <span class="item-title">칠가이의 모험</span>
-          <span class="item-period">2025.08 ~ 2025.12</span>
-        </div>
-        <p class="item-role">기획 / 문서 (역할: 게임 기획 및 문서)</p>
-        <div class="project-meta">
-          <span class="tag">Unity</span>
-          <span class="tag">C#</span>
-          <span class="tag">Figma</span>
-          <span class="tag">Notion</span>
-        </div>
-        <ul>
-          <li>게임, 스토리 기획</li>
-          <li>PBL 및 PPT 문서 작업</li>
-        </ul>
-      </div>
-    </section>
-  </div>
-
-  <div id="panel-gameplay" class="panel" role="tabpanel" aria-labelledby="tab-gameplay" hidden>
-    <section class="card">
-      <h2>게임 플레이 이력</h2>
-      <p class="history-note">2026.09.03 기준 구글플레이 국내 매출 순위 1~45위. <strong>기간 · 레벨 · 게임 설명</strong> 칸은 클릭해서 직접 입력할 수 있고, 이 브라우저에 자동 저장됩니다.</p>
-
-      <div class="history-table-wrap">
-        <table class="history-table">
-          <thead>
-            <tr>
-              <th class="col-rank">순위</th>
-              <th class="col-name">게임</th>
-              <th>기간</th>
-              <th>레벨</th>
-              <th>장르</th>
-              <th class="col-desc">게임 설명</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td class="col-rank">1</td><td class="col-name">제우스: 오만의 신</td><td contenteditable="true" data-field="1-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="1-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">RPG</span></td><td class="col-desc" contenteditable="true" data-field="1-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">2</td><td class="col-name">리니지M</td><td contenteditable="true" data-field="2-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="2-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">MMORPG</span></td><td class="col-desc" contenteditable="true" data-field="2-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">3</td><td class="col-name">SOL: enchant</td><td contenteditable="true" data-field="3-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="3-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">RPG</span></td><td class="col-desc" contenteditable="true" data-field="3-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">4</td><td class="col-name">WOS: 화이트아웃 서바이벌</td><td contenteditable="true" data-field="4-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="4-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">전략(SLG)</span></td><td class="col-desc" contenteditable="true" data-field="4-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">5</td><td class="col-name">킹샷: Kingshot</td><td contenteditable="true" data-field="5-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="5-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">전략(SLG)</span></td><td class="col-desc" contenteditable="true" data-field="5-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">6</td><td class="col-name">오딘: 발할라 라이징</td><td contenteditable="true" data-field="6-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="6-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">MMORPG</span></td><td class="col-desc" contenteditable="true" data-field="6-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">7</td><td class="col-name">메이플 키우기</td><td contenteditable="true" data-field="7-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="7-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">방치형</span></td><td class="col-desc" contenteditable="true" data-field="7-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">8</td><td class="col-name">로블록스 (Roblox)</td><td contenteditable="true" data-field="8-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="8-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">샌드박스</span></td><td class="col-desc" contenteditable="true" data-field="8-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">9</td><td class="col-name">로얄 매치 Royal Match</td><td contenteditable="true" data-field="9-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="9-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">퍼즐(매치3)</span></td><td class="col-desc" contenteditable="true" data-field="9-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">10</td><td class="col-name">가십하버: 합성 & 스토리 게임</td><td contenteditable="true" data-field="10-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="10-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">퍼즐(합성)</span></td><td class="col-desc" contenteditable="true" data-field="10-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">11</td><td class="col-name">한게임포커 클래식</td><td contenteditable="true" data-field="11-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="11-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">카드·보드</span></td><td class="col-desc" contenteditable="true" data-field="11-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">12</td><td class="col-name">쿠키런 키우기 - 쿠키런: 크럼블</td><td contenteditable="true" data-field="12-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="12-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">방치형</span></td><td class="col-desc" contenteditable="true" data-field="12-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">13</td><td class="col-name">열혈강호: 넥스트</td><td contenteditable="true" data-field="13-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="13-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">MMORPG</span></td><td class="col-desc" contenteditable="true" data-field="13-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">14</td><td class="col-name">라스트 워: 서바이벌</td><td contenteditable="true" data-field="14-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="14-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">전략(SLG)</span></td><td class="col-desc" contenteditable="true" data-field="14-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">15</td><td class="col-name">운빨존많겜</td><td contenteditable="true" data-field="15-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="15-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">파티·보드</span></td><td class="col-desc" contenteditable="true" data-field="15-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">16</td><td class="col-name">승리의 여신: 니케</td><td contenteditable="true" data-field="16-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="16-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">RPG</span></td><td class="col-desc" contenteditable="true" data-field="16-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">17</td><td class="col-name">마비노기 모바일</td><td contenteditable="true" data-field="17-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="17-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">MMORPG</span></td><td class="col-desc" contenteditable="true" data-field="17-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">18</td><td class="col-name">FC 모바일</td><td contenteditable="true" data-field="18-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="18-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">스포츠</span></td><td class="col-desc" contenteditable="true" data-field="18-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">19</td><td class="col-name">씨사이드 익스케이프: 합성 & 스토리 게임</td><td contenteditable="true" data-field="19-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="19-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">퍼즐(합성)</span></td><td class="col-desc" contenteditable="true" data-field="19-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">20</td><td class="col-name">삼국지: 천하결전</td><td contenteditable="true" data-field="20-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="20-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">전략(SLG)</span></td><td class="col-desc" contenteditable="true" data-field="20-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">21</td><td class="col-name">테이스티 트레블: 합성 게임</td><td contenteditable="true" data-field="21-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="21-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">퍼즐(합성)</span></td><td class="col-desc" contenteditable="true" data-field="21-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">22</td><td class="col-name">명조: 워더링 웨이브</td><td contenteditable="true" data-field="22-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="22-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">액션RPG</span></td><td class="col-desc" contenteditable="true" data-field="22-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">23</td><td class="col-name">피망 포커 : 카지노 로얄</td><td contenteditable="true" data-field="23-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="23-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">카드·보드</span></td><td class="col-desc" contenteditable="true" data-field="23-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">24</td><td class="col-name">꿈의 정원 (Gardenscapes)</td><td contenteditable="true" data-field="24-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="24-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">퍼즐(매치3)</span></td><td class="col-desc" contenteditable="true" data-field="24-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">25</td><td class="col-name">라스트 Z: 서바이벌 슈터</td><td contenteditable="true" data-field="25-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="25-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">슈팅</span></td><td class="col-desc" contenteditable="true" data-field="25-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">26</td><td class="col-name">컴투스프로야구V26</td><td contenteditable="true" data-field="26-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="26-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">스포츠</span></td><td class="col-desc" contenteditable="true" data-field="26-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">27</td><td class="col-name">Pokémon GO</td><td contenteditable="true" data-field="27-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="27-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">시뮬레이션</span></td><td class="col-desc" contenteditable="true" data-field="27-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">28</td><td class="col-name">라스트 어사일럼: 페스트</td><td contenteditable="true" data-field="28-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="28-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">전략(SLG)</span></td><td class="col-desc" contenteditable="true" data-field="28-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">29</td><td class="col-name">EA SPORTS FC Online M</td><td contenteditable="true" data-field="29-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="29-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">스포츠</span></td><td class="col-desc" contenteditable="true" data-field="29-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">30</td><td class="col-name">뱀피르</td><td contenteditable="true" data-field="30-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="30-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">RPG</span></td><td class="col-desc" contenteditable="true" data-field="30-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">31</td><td class="col-name">로얄 킹덤 (Royal Kingdom)</td><td contenteditable="true" data-field="31-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="31-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">퍼즐(매치3)</span></td><td class="col-desc" contenteditable="true" data-field="31-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">32</td><td class="col-name">협타디: 협동 타워 디펜스</td><td contenteditable="true" data-field="32-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="32-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">타워디펜스</span></td><td class="col-desc" contenteditable="true" data-field="32-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">33</td><td class="col-name">뚜까펫: 서바이벌</td><td contenteditable="true" data-field="33-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="33-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">방치형</span></td><td class="col-desc" contenteditable="true" data-field="33-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">34</td><td class="col-name">메이플스토리M</td><td contenteditable="true" data-field="34-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="34-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">MMORPG</span></td><td class="col-desc" contenteditable="true" data-field="34-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">35</td><td class="col-name">소녀전선2: 망명</td><td contenteditable="true" data-field="35-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="35-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">RPG</span></td><td class="col-desc" contenteditable="true" data-field="35-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">36</td><td class="col-name">트릭컬 리바이브</td><td contenteditable="true" data-field="36-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="36-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">RPG</span></td><td class="col-desc" contenteditable="true" data-field="36-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">37</td><td class="col-name">할리우드 머지</td><td contenteditable="true" data-field="37-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="37-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">퍼즐(합성)</span></td><td class="col-desc" contenteditable="true" data-field="37-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">38</td><td class="col-name">로그W: 리메인즈 오브 갓</td><td contenteditable="true" data-field="38-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="38-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">로그라이크</span></td><td class="col-desc" contenteditable="true" data-field="38-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">39</td><td class="col-name">리니지W</td><td contenteditable="true" data-field="39-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="39-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">MMORPG</span></td><td class="col-desc" contenteditable="true" data-field="39-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">40</td><td class="col-name">뮤 모나크2</td><td contenteditable="true" data-field="40-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="40-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">MMORPG</span></td><td class="col-desc" contenteditable="true" data-field="40-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">41</td><td class="col-name">에픽세븐</td><td contenteditable="true" data-field="41-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="41-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">RPG</span></td><td class="col-desc" contenteditable="true" data-field="41-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">42</td><td class="col-name">이환</td><td contenteditable="true" data-field="42-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="42-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">MMORPG</span></td><td class="col-desc" contenteditable="true" data-field="42-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">43</td><td class="col-name">WPL: 홀덤·토너먼트·오마하</td><td contenteditable="true" data-field="43-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="43-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">카드·보드</span></td><td class="col-desc" contenteditable="true" data-field="43-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">44</td><td class="col-name">캔디크러쉬사가 (Candy Crush Saga)</td><td contenteditable="true" data-field="44-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="44-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">퍼즐(매치3)</span></td><td class="col-desc" contenteditable="true" data-field="44-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-            <tr><td class="col-rank">45</td><td class="col-name">미스터리 타운: 합성 게임 (Mystery Town)</td><td contenteditable="true" data-field="45-period" data-placeholder="예: 2026.09~"></td><td contenteditable="true" data-field="45-level" data-placeholder="예: Lv.30"></td><td><span class="genre-chip">퍼즐(합성)</span></td><td class="col-desc" contenteditable="true" data-field="45-desc" data-placeholder="플레이 소감을 적어보세요"></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-  </div>
-
-  <div id="panel-event" class="panel" role="tabpanel" aria-labelledby="tab-event" hidden>
-    <div class="event-doc">
-      <p class="event-doc__eyebrow">Event Proposal</p>
-      <h2 class="event-doc__title">가면무도회의 미메시스</h2>
-      <p class="event-doc__lede">누구도 믿을 수 없는 밤, 모두가 가면을 쓰는 계절 — 미메시스의 핵심 공포를 할로윈으로 확장한다.</p>
-
-      <nav class="event-doc__nav" aria-label="이벤트 기획서 목차">
-        <a class="event-nav-btn" href="#ev-bg">01 기획 배경</a>
-        <a class="event-nav-btn" href="#ev-goal">02 이벤트 목적</a>
-        <a class="event-nav-btn" href="#ev-concept">03 이벤트 컨셉</a>
-        <a class="event-nav-btn" href="#ev-plan">04 세부 운영안</a>
-        <a class="event-nav-btn" href="#ev-effect">05 기대 효과</a>
-      </nav>
-
-      <section class="event-block" id="ev-bg">
-        <span class="event-block__num">01</span>
-        <h3>기획 배경</h3>
-        <p>미메시스는 AI가 플레이어의 행동과 목소리를 실시간으로 모방해 "누가 진짜 동료인지 알 수 없다"는 불신과 심리전이 핵심 재미인 4인 협동 공포 게임이다.</p>
-        <p>할로윈이라는 시즌 자체가 '가면을 쓰고 정체를 숨긴다'는 컨셉을 가지고 있어, 게임의 핵심 메커니즘과 자연스럽게 맞닿아 있다. 이 접점을 활용해 할로윈 시즌 한정 이벤트를 기획한다.</p>
-      </section>
-
-      <section class="event-block" id="ev-goal">
-        <span class="event-block__num">02</span>
-        <h3>이벤트 목적</h3>
-        <ul>
-          <li>할로윈 시즌 한정 콘텐츠로 화제성 확보</li>
-          <li>기존 유저 재접속 유도</li>
-          <li>신규 유저 유입 촉진</li>
-        </ul>
-      </section>
-
-      <section class="event-block" id="ev-concept">
-        <span class="event-block__num">03</span>
-        <h3>이벤트 컨셉</h3>
-        <div class="event-concept">
-          <p class="event-concept__name">가면무도회의 미메시스</p>
-          <p style="margin:0;">이벤트 기간 동안 전원이 할로윈 코스튬을 착용하게 되어, 평소보다 팀원 간 시각적 구분이 더 어려워지는 룰 변형을 핵심으로 한다.</p>
-        </div>
-      </section>
-
-      <section class="event-block" id="ev-plan">
-        <span class="event-block__num">04</span>
-        <h3>세부 운영안</h3>
-
-        <h4>이벤트 기간</h4>
-        <p>10월 중순 ~ 11월 초 (약 3주)</p>
-
-        <h4>접속 보상</h4>
-        <p>로그인 시 할로윈 코스튬 1종(호박 / 유령 / 마녀 중 택1) 즉시 지급</p>
-
-        <h4>정비소 상점 개편</h4>
-        <p>기간 한정으로 기존 아이템을 할로윈 테마로 리스킨하여 정비소 상점에 추가 진열한다. 기존 게임 내 재화로 구매하는 방식이며, 신규 화폐는 도입하지 않는다.</p>
-        <div class="event-table-wrap">
-          <table class="event-table">
-            <thead>
-              <tr><th>기존 아이템</th><th>할로윈 리스킨</th><th>컨셉</th></tr>
-            </thead>
-            <tbody>
-              <tr><td class="is-old">나침반</td><td class="is-new">저주받은 나침반</td><td>바늘이 미메시스 방향을 가리키는 듯한 연출 추가</td></tr>
-              <tr><td class="is-old">전기 파리채</td><td class="is-new">마녀의 빗자루</td><td>감전 이펙트를 보라색 마법 이펙트로 변경</td></tr>
-              <tr><td class="is-old">시끄러운 닭</td><td class="is-new">유령 까마귀</td><td>미메시스 접근 시 우는 소리를 까마귀 울음으로 변경</td></tr>
-              <tr><td class="is-old">디톡스 주스</td><td class="is-new">마녀의 물약</td><td>병 디자인만 변경, 효과는 동일</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h4>크리에이터 챌린지 연계</h4>
-        <p>"미메시스를 가장 완벽하게 흉내 낸 클립" 공모전 — 기존 크래프톤 크리에이터 네트워크(KCN) 챌린지 방식을 재활용한다.</p>
-      </section>
-
-      <section class="event-block" id="ev-effect">
-        <span class="event-block__num">05</span>
-        <h3>기대 효과</h3>
-        <ol class="event-effects">
-          <li><strong>시즌성 화제 콘텐츠 확보</strong>SNS·커뮤니티 언급량 증가</li>
-          <li><strong>재화 소비 촉진</strong>기간 한정 리스킨 아이템의 희소성으로 정비소 재화 소비 및 소장 욕구 자극</li>
-          <li><strong>유저 재접속 유도</strong>접속 보상을 통한 이탈 유저 복귀 및 신규 유저 진입 장벽 완화</li>
-          <li><strong>게임 본연의 재미 강화</strong>코스튬으로 인한 시각적 구분 난이도 상승으로 미메시스 핵심 재미인 불신·심리전 요소 심화</li>
-        </ol>
-      </section>
+    <div class="mail">
+      <span id="mail">0416moon@naver.com</span>
+      <button class="copy" id="copyBtn" type="button">복사</button>
     </div>
-  </div>
+    <nav class="nav" aria-label="섹션 이동">
+      <a href="#experience">경험 <small>EXPERIENCE</small></a>
+      <a href="#projects">프로젝트 <small>PROJECTS</small></a>
+      <a href="#assignments">과제 <small>ASSIGNMENTS</small></a>
+    </nav>
+    <div class="skills">
+      <div class="label">Tools</div>
+      <div class="chips">
+        <span class="chip">Unity</span><span class="chip">C#</span><span class="chip">Notion</span><span class="chip">Figma</span><span class="chip">3D 프린터</span>
+      </div>
+    </div>
+  </aside>
 
+  <main>
+    <!-- ================= 경험 ================= -->
+    <section id="experience">
+      <div class="sec-head"><h2>경험</h2><span class="en">EXPERIENCE</span><span class="count">경력 · 학력 · 자격증</span></div>
+
+      <div class="sub">경력</div>
+      <div class="row">
+        <div class="period">2026.03</div>
+        <div>
+          <h3>크래프톤</h3>
+          <p class="meta">QA 게임 테스트</p>
+          <ul><li>AI와 한 팀을 이뤄 'PUBG: 배틀그라운드'를 플레이하며 대화 수행</li></ul>
+        </div>
+      </div>
+
+      <div class="sub">학력</div>
+      <div class="row">
+        <div class="period">2021.03 – 현재</div>
+        <div><h3>유한대학교</h3><p class="meta">컴퓨터공학과 게임콘텐츠전공</p></div>
+      </div>
+      <div class="row">
+        <div class="period">2018.03 – 2021.02</div>
+        <div><h3>환일고등학교</h3><p class="meta">졸업</p></div>
+      </div>
+
+      <div class="sub">자격증</div>
+      <div class="row">
+        <div class="period">취득</div>
+        <div><h3>ITQ 한글 · ITQ 엑셀</h3><p class="meta">기획 문서 작성과 데이터 정리 실무 역량</p></div>
+      </div>
+    </section>
+
+    <!-- ================= 프로젝트 ================= -->
+    <section id="projects">
+      <div class="sec-head"><h2>프로젝트</h2><span class="en">PROJECTS</span><span class="count">4개</span></div>
+
+      <div class="projects">
+        <article class="card feature">
+          <div class="card-top">
+            <h3>Blind Echo<small>캡스톤디자인 · 팀 Storm Meteor</small></h3>
+            <span class="status">진행 중 · 2026.08 –</span>
+          </div>
+          <p class="desc">눈이 보이지 않는 상태에서 파동(에코로케이션)으로 서로의 위치를 찾는 1 vs N 비대칭 심리 술래잡기 게임.</p>
+          <dl class="spec">
+            <dt>분류</dt><dd>기획 / 문서</dd>
+            <dt>역할</dt><dd>서브 기획, QA, 문서 정리</dd>
+          </dl>
+          <ul>
+            <li>게임 카테고리 기획</li>
+            <li>Notion 기획 문서 제작</li>
+          </ul>
+          <div class="chips"><span class="chip">Unity</span><span class="chip">C#</span><span class="chip">Notion</span></div>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <h3>내 약국엔 정상이 없다<small>Project Pharmacy</small></h3>
+            <span class="status">2026.03 – 06</span>
+          </div>
+          <dl class="spec">
+            <dt>분류</dt><dd>기획 / 문서</dd>
+            <dt>역할</dt><dd>기획, 사운드 제작</dd>
+          </dl>
+          <ul>
+            <li>게임 플레이 설계 기획</li>
+            <li>장면별 사운드 제작</li>
+          </ul>
+          <div class="chips"><span class="chip">Unity</span><span class="chip">C#</span><span class="chip">Notion</span></div>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <h3>Last Warrior Standing<small>보드게임</small></h3>
+            <span class="status">2025.08 – 12</span>
+          </div>
+          <dl class="spec">
+            <dt>분류</dt><dd>보드게임</dd>
+            <dt>역할</dt><dd>보드게임 제작, 테스트</dd>
+          </dl>
+          <ul>
+            <li>게임 판과 카드 제작</li>
+            <li>플레이 테스트 및 캐릭터 밸런싱</li>
+          </ul>
+          <div class="chips"><span class="chip">3D 프린터</span><span class="chip">폼보드</span></div>
+        </article>
+
+        <article class="card feature">
+          <div class="card-top">
+            <h3>칠가이의 모험<small>PBL 프로젝트</small></h3>
+            <span class="status">2025.08 – 12</span>
+          </div>
+          <dl class="spec">
+            <dt>분류</dt><dd>기획 / 문서</dd>
+            <dt>역할</dt><dd>게임 기획, 문서</dd>
+          </dl>
+          <ul>
+            <li>게임 및 스토리 기획</li>
+            <li>PBL 보고서와 발표 PPT 작업</li>
+          </ul>
+          <div class="chips"><span class="chip">Unity</span><span class="chip">C#</span><span class="chip">Figma</span><span class="chip">Notion</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= 과제 ================= -->
+    <section id="assignments">
+      <div class="sec-head"><h2>과제</h2><span class="en">ASSIGNMENTS</span><span class="count">2개</span></div>
+
+      <article class="doc">
+        <div class="doc-head">
+          <div class="label">게임 이벤트 기획서 · 트렌드 코리아 2026</div>
+          <h3>MIMESIS 할로윈 시즌 이벤트</h3>
+          <p>크래프톤의 '미메시스'를 대상으로 한 기간 한정 이벤트 기획. AI를 게임에 잘 녹여낸 사례라는 점에서 대상 게임으로 선정했다.</p>
+        </div>
+        <div class="doc-body">
+          <div class="part">
+            <div class="no">01</div>
+            <div>
+              <h4>세부 운영안</h4>
+              <div class="facts">
+                <div class="fact"><b>이벤트 기간</b>10월 중순 – 11월 초 (약 3주)</div>
+                <div class="fact"><b>접속 보상</b>할로윈 코스튬 1종 즉시 지급 (호박 / 유령 / 마녀 중 택1)</div>
+              </div>
+              <p><strong>정비소 상점 개편.</strong> 기존 아이템을 할로윈 테마로 리스킨해 기간 한정으로 진열한다. 기존 게임 재화로 구매하며 신규 화폐는 도입하지 않는다.</p>
+              <div class="table-wrap">
+                <table class="reskin">
+                  <thead><tr><th>기존 아이템</th><th>할로윈 리스킨</th><th>변경 컨셉</th></tr></thead>
+                  <tbody>
+                    <tr><td>나침반</td><td>저주받은 나침반</td><td>바늘이 미메시스 방향을 가리키는 듯한 연출 추가</td></tr>
+                    <tr><td>전기 파리채</td><td>마녀의 빗자루</td><td>감전 이펙트를 보라색 마법 이펙트로 변경</td></tr>
+                    <tr><td>시끄러운 닭</td><td>유령 까마귀</td><td>미메시스 접근 시 울음소리를 까마귀 소리로 변경</td></tr>
+                    <tr><td>디톡스 주스</td><td>마녀의 물약</td><td>병 디자인만 변경, 효과는 동일</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p><strong>크리에이터 챌린지 연계.</strong> "미메시스를 가장 완벽하게 흉내 낸 클립" 공모전. 크래프톤 크리에이터 네트워크(KCN) 챌린지 방식을 그대로 활용한다.</p>
+            </div>
+          </div>
+          <div class="part">
+            <div class="no">02</div>
+            <div>
+              <h4>기대 효과</h4>
+              <ul class="effects">
+                <li><b>시즌성 화제 콘텐츠 확보</b><span>SNS와 커뮤니티 언급량 증가</span></li>
+                <li><b>재화 소비 촉진</b><span>기간 한정 리스킨의 희소성으로 소장 욕구 자극</span></li>
+                <li><b>유저 재접속 유도</b><span>접속 보상으로 이탈 유저 복귀, 신규 유저 진입 장벽 완화</span></li>
+                <li><b>게임 본연의 재미 강화</b><span>코스튬으로 구분이 어려워져 불신과 심리전 요소 심화</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="doc">
+        <div class="doc-head">
+          <div class="label">게임 분석 · 재미요소 분석</div>
+          <h3>트릭컬 리바이브의 재미요소</h3>
+          <p>귀여운 외형의 수집형 RPG가 어떻게 유저를 붙잡아 두는지, 재미요소 네 가지를 MDA 관점(메카닉 · 다이내믹 · 감성)으로 나눠 분석하고 기획적 시사점을 정리했다.</p>
+        </div>
+        <div class="doc-body">
+          <div class="part">
+            <div class="no">01</div>
+            <div>
+              <h4>분석 개요</h4>
+              <div class="facts">
+                <div class="fact"><b>장르</b>수집형 RPG</div>
+                <div class="fact"><b>분석 틀</b>MDA 프레임워크</div>
+                <div class="fact"><b>분석 축</b>교감 · 성장 · 서사 · 운영</div>
+              </div>
+              <p>네 가지 재미는 서로 다른 층위에서 작동한다. 캐릭터 교감과 스토리는 감정적 애착을, 인게임 성장은 반복 플레이의 동기를, 운영과 소통은 장기적인 신뢰를 만든다.</p>
+            </div>
+          </div>
+          <div class="part">
+            <div class="no">02</div>
+            <div>
+              <h4>재미요소 네 가지</h4>
+              <div class="table-wrap">
+                <table class="fun">
+                  <thead><tr><th>재미요소</th><th>내용</th><th>유저가 느끼는 재미</th></tr></thead>
+                  <tbody>
+                    <tr><td>볼따구 터치와 비주얼</td><td>컷신, 게임 설명 등 곳곳에서 캐릭터의 볼을 잡아당길 수 있는 독보적인 연출</td><td>직접 만지는 상호작용으로 캐릭터와 교감하고 애착이 생김</td></tr>
+                    <tr><td>오토체스식 인게임 성장</td><td>전투 중 캐릭터 구매, 레벨업, 리롤을 거치며 매 판 달라지는 빌드업</td><td>같은 콘텐츠도 매번 다른 조합을 시도하는 전략적 선택의 재미</td></tr>
+                    <tr><td>B급 매운맛 스토리</td><td>귀여운 외형과 대비되는 씁쓸하고 엉뚱한 블랙 유머, 밈 패러디 중심 서사</td><td>예상을 깨는 반전에서 오는 웃음과 다음 이야기에 대한 기대</td></tr>
+                    <tr><td>유저 친화적 운영</td><td>개발사의 적극적인 소통, 넉넉한 보상, 부담 없는 일일 숙제</td><td>피로감 없이 꾸준히 접속하고, 게임과 개발사를 신뢰하게 됨</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="part">
+            <div class="no">03</div>
+            <div>
+              <h4>재미가 이어지는 구조</h4>
+              <p>각 요소는 따로 작동하지 않고 하나의 순환으로 연결된다.</p>
+              <div class="loop">
+                <span>스토리 · 비주얼로 캐릭터에 호감</span><i>→</i>
+                <span>볼따구 교감으로 애착 형성</span><i>→</i>
+                <span>그 캐릭터로 전투 빌드업</span><i>→</i>
+                <span>넉넉한 보상 · 가벼운 숙제로 재접속</span><i>↺</i>
+              </div>
+              <p>특히 볼따구 터치는 별도 콘텐츠가 아니라 컷신과 설명 화면 같은 일상적인 순간에 녹아 있어, 플레이 내내 캐릭터와의 거리를 좁혀 준다.</p>
+            </div>
+          </div>
+          <div class="part">
+            <div class="no">04</div>
+            <div>
+              <h4>기획적 시사점</h4>
+              <ul class="effects">
+                <li><b>상호작용은 일상 화면에 녹인다</b><span>교감 요소를 전용 메뉴에 가두지 않고 자주 보는 화면에 배치하면 체감 빈도가 높아진다</span></li>
+                <li><b>대비가 개성을 만든다</b><span>귀여운 외형과 매운 스토리처럼 예상과 어긋나는 조합이 게임을 기억에 남게 한다</span></li>
+                <li><b>반복 콘텐츠에 변수를 준다</b><span>리롤과 빌드 선택 같은 매 판의 변수가 반복 플레이의 지루함을 줄인다</span></li>
+                <li><b>운영도 재미의 일부다</b><span>숙제 부담을 낮추고 보상을 넉넉히 주는 운영이 장기 리텐션을 지탱한다</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>© 2026 문선호 · Game Planner</footer>
 </div>
 
 <script>
-  (function () {
-    var tabs = document.querySelectorAll('[role="tab"]');
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        tabs.forEach(function (t) {
-          var panel = document.getElementById(t.getAttribute('aria-controls'));
-          var selected = t === tab;
-          t.setAttribute('aria-selected', selected ? 'true' : 'false');
-          panel.hidden = !selected;
-          panel.classList.toggle('is-active', selected);
-        });
-      });
-    });
-  })();
-
-  (function () {
-    var cells = document.querySelectorAll('#panel-gameplay [contenteditable]');
-    cells.forEach(function (cell) {
-      var key = 'gameplay-history:' + cell.dataset.field;
-      try {
-        var saved = localStorage.getItem(key);
-        if (saved) cell.textContent = saved;
-      } catch (e) {}
-      cell.addEventListener('input', function () {
-        try { localStorage.setItem(key, cell.textContent); } catch (e) {}
-      });
-    });
-  })();
+(function(){
+  var btn=document.getElementById('copyBtn');
+  btn.addEventListener('click',function(){
+    var t=document.getElementById('mail').textContent;
+    var done=function(){btn.textContent='복사됨';setTimeout(function(){btn.textContent='복사'},1500)};
+    var fallback=function(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='선택됨';setTimeout(function(){btn.textContent='복사'},1500)};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fallback)}else fallback();
+  });
+  var links=[].slice.call(document.querySelectorAll('.nav a'));
+  var setOn=function(id){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id)})};
+  setOn('experience');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)setOn(e.target.id)})},{rootMargin:'-35% 0px -60% 0px'});
+    ['experience','projects','assignments'].forEach(function(id){io.observe(document.getElementById(id))});
+  }
+})();
 </script>
+</body>
+</html>
