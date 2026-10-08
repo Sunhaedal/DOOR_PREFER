@@ -121,6 +121,16 @@ main{min-width:0;display:flex;flex-direction:column;gap:88px}
 .tagline{margin:0;padding:10px 14px;border-left:3px solid var(--accent);background:var(--bg);font-weight:600;font-size:15px}
 .tagline span{display:block;margin-top:2px;font-weight:400;font-size:12px;color:var(--muted)}
 .tagline span::before{content:"* "}
+.card.media>.shot{display:flex;align-items:center;justify-content:center;background:#14161C}
+.card.media>.shot img{height:auto;object-fit:contain}
+.zoomable{cursor:zoom-in}
+.lightbox{position:fixed;inset:0;z-index:50;background:rgba(6,8,12,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:calc(env(safe-area-inset-top,0px) + 20px) 16px calc(env(safe-area-inset-bottom,0px) + 20px);cursor:zoom-out}
+.lightbox[hidden]{display:none}
+.lightbox img{max-width:100%;max-height:calc(100% - 48px);object-fit:contain;border-radius:4px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.lightbox p{margin:0;color:#E7EBF2;font-family:var(--font-mono);font-size:12px;letter-spacing:.04em;text-align:center}
+.lightbox button{position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);right:16px;font:inherit;font-size:22px;line-height:1;color:#E7EBF2;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:4px;width:40px;height:40px;cursor:pointer}
+.shot figcaption::after{content:" · 클릭하면 확대";opacity:.7}
+.echo figcaption::after{content:none}
 .title-wrap{display:flex;align-items:center;gap:14px;min-width:0}
 .app-icon{width:64px;height:64px;flex:none;border-radius:22%;object-fit:cover;box-shadow:0 0 0 1px var(--line)}
 .card h3 small{display:block;font-size:13px;font-weight:500;color:var(--muted);margin-top:2px}
@@ -286,7 +296,7 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
 
         <article class="card feature media">
           <figure class="shot">
-            <img src="assets/img/pharmacy-play-01.jpg" alt="약국 카운터 앞에 손님 두 명이 대기 중이고, 안쪽 바닥에 쓰러진 손님이 있는 플레이 화면. 좌측 상단에 일차·시간·보유금, 우측에 아이템 슬롯이 보인다" width="1280" height="716" loading="lazy">
+            <img src="assets/img/pharmacy-play-02.jpg" alt="약국 카운터 앞에 손님 두 명이 대기 중이고, 안쪽 바닥에 쓰러진 손님이 있는 플레이 화면. 좌측 상단에 일차·시간·보유금, 우측에 아이템 슬롯이 보인다" width="1280" height="716" loading="lazy">
             <figcaption>플레이 화면 · 손님 응대 중 쓰러진 손님 발생</figcaption>
           </figure>
           <div class="card-body">
@@ -360,7 +370,7 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
             </figure>
             <div class="thumbs" role="group" aria-label="Last Warrior Standing 사진">
               <button type="button" class="thumb on" aria-pressed="true" data-src="assets/img/lws-board.jpg" data-w="1100" data-h="1100" data-cap="보드판 · 마을 · 숲 · 설원 3단 구조" data-alt="마을, 숲, 설원 세 층을 계단처럼 쌓아 올린 입체 보드판. 가장자리를 따라 원형 칸이 이어지고 맨 위 중앙에 세계수 블록이 있다"><img src="assets/img/lws-board.jpg" alt="" loading="lazy"></button>
-              <button type="button" class="thumb" aria-pressed="false" data-src="assets/img/lws-cards.jpg" data-w="1100" data-h="1100" data-cap="카드 · 황금, 일반, 고유 세 가지 분류" data-alt="닭 그림의 카드, 공격 · 방어 · 이동 카드, 화살비 · 창 던지기 · 발도 같은 캐릭터 카드가 펼쳐져 있다"><img src="assets/img/lws-cards.jpg" alt="" loading="lazy"></button>
+              <button type="button" class="thumb" aria-pressed="false" data-src="assets/img/lws-cards-r.jpg" data-w="1100" data-h="1100" data-cap="카드 · 황금, 일반, 고유 세 가지 분류" data-alt="닭 그림의 카드, 공격 · 방어 · 이동 카드, 화살비 · 창 던지기 · 발도 같은 캐릭터 카드가 펼쳐져 있다"><img src="assets/img/lws-cards-r.jpg" alt="" loading="lazy"></button>
               <button type="button" class="thumb" aria-pressed="false" data-src="assets/img/lws-figures.jpg" data-w="1200" data-h="676" data-cap="말 · 궁수, 검사, 바이킹, 전사 (3D 출력)" data-alt="검은 필라멘트로 3D 출력한 궁수, 검사, 바이킹, 전사 캐릭터 말 네 개"><img src="assets/img/lws-figures.jpg" alt="" loading="lazy"></button>
             </div>
           </div>
@@ -527,6 +537,12 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
     </section>
   </main>
 
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="사진 크게 보기">
+    <button type="button" id="lbClose" aria-label="닫기">×</button>
+    <img id="lbImg" alt="">
+    <p id="lbCap"></p>
+  </div>
+
   <footer>© 2026 문선호 · Game Planner</footer>
 </div>
 
@@ -556,6 +572,16 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
       });
     });
   });
+  var lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap'),lastFocus=null;
+  function openLb(img){var fig=img.closest('figure'),cap=fig&&fig.querySelector('figcaption');lbImg.src=img.currentSrc||img.src;lbImg.alt=img.alt;lbCap.textContent=cap?cap.textContent:'';lastFocus=document.activeElement;lb.hidden=false;document.getElementById('lbClose').focus()}
+  function closeLb(){lb.hidden=true;lbImg.removeAttribute('src');if(lastFocus)lastFocus.focus()}
+  [].forEach.call(document.querySelectorAll('.card .shot img'),function(img){
+    img.classList.add('zoomable');img.tabIndex=0;img.setAttribute('role','button');
+    img.addEventListener('click',function(){openLb(img)});
+    img.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openLb(img)}});
+  });
+  lb.addEventListener('click',closeLb);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!lb.hidden)closeLb()});
   var cv=document.getElementById('echo');
   if(cv&&cv.getContext){
     var ctx=cv.getContext('2d'),dpr=Math.min(window.devicePixelRatio||1,2),W=0,H=0,waves=[],last=0;
