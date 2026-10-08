@@ -17,14 +17,15 @@
   --line:#D2D8E2;
   --accent:#2B45E6;
   --accent-soft:#E2E7FF;
+  --t-unity:#3A4150;--t-cs:#8240D4;--t-notion:#9A6B3F;--t-figma:#E0532A;--t-print:#21966A;--t-board:#C1840E;
   --font-display:"Black Han Sans","IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --font-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
   --font-mono:"IBM Plex Mono","IBM Plex Sans KR",ui-monospace,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0E121A;--surface:#161C27;--ink:#E7EBF2;--muted:#98A2B4;--line:#283041;--accent:#8496FF;--accent-soft:#1E2747;color-scheme:dark}}
+  --bg:#0E121A;--surface:#161C27;--ink:#E7EBF2;--muted:#98A2B4;--line:#283041;--accent:#8496FF; --accent-soft:#1E2747;--t-unity:#C3CAD6;--t-cs:#B993F2;--t-notion:#D3A77A;--t-figma:#FF8C69;--t-print:#5CCB9D;--t-board:#F0B848;color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0E121A;--surface:#161C27;--ink:#E7EBF2;--muted:#98A2B4;--line:#283041;--accent:#8496FF;--accent-soft:#1E2747;color-scheme:dark}
+  --bg:#0E121A;--surface:#161C27;--ink:#E7EBF2;--muted:#98A2B4;--line:#283041;--accent:#8496FF; --accent-soft:#1E2747;--t-unity:#C3CAD6;--t-cs:#B993F2;--t-notion:#D3A77A;--t-figma:#FF8C69;--t-print:#5CCB9D;--t-board:#F0B848;color-scheme:dark}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
@@ -68,6 +69,7 @@ main{min-width:0;display:flex;flex-direction:column;gap:88px}
 .period{font-family:var(--font-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:3px}
 .row h3{margin:0;font-size:18px;font-weight:700;text-wrap:balance}
 .row .meta{margin:2px 0 0;color:var(--muted)}
+.row .note{margin:8px 0 0;max-width:62ch}
 .row ul{margin:10px 0 0;padding-left:18px}
 .row li{margin:2px 0}
 
@@ -78,6 +80,49 @@ main{min-width:0;display:flex;flex-direction:column;gap:88px}
 .card.feature{grid-column:1/-1}
 .card-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
 .card h3{margin:0;font-size:20px;font-weight:700;text-wrap:balance}
+.card.media{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:0;padding:0;overflow:hidden}
+.card.media .card-body{padding:24px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.shot{margin:0;position:relative;background:var(--ink);min-height:100%}
+.shot img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:16/9}
+.shot figcaption{position:absolute;left:12px;bottom:12px;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;color:#fff;background:rgba(10,14,22,.72);padding:3px 8px;border-radius:3px}
+@media (max-width:760px){.card.media{grid-template-columns:minmax(0,1fr)}.shot img{height:auto}}
+.card.media.flip{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr)}
+.card.media.flip .gallery{order:2}
+.gallery{display:flex;flex-direction:column;background:#3E4049;min-width:0}
+.gallery .shot{flex:1;min-height:0;background:#3E4049;display:flex;align-items:center;justify-content:center}
+.gallery .shot img{height:auto;object-fit:contain;aspect-ratio:4/3}
+.pixel{image-rendering:pixelated}
+.thumbs{display:flex;gap:8px;padding:10px}
+.thumb{flex:1;min-width:0;padding:0;border:2px solid transparent;border-radius:4px;background:#2B2D34;cursor:pointer;overflow:hidden;opacity:.6;transition:opacity .15s,border-color .15s}
+.thumb img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.gallery.pix .thumb img{image-rendering:pixelated}
+.thumb:hover{opacity:1}
+.thumb.on{opacity:1;border-color:var(--accent)}
+.thumb:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:760px){.card.media.flip{grid-template-columns:minmax(0,1fr)}.card.media.flip .gallery{order:0}}
+.doc-link{display:inline-flex;align-items:baseline;gap:10px;align-self:flex-start;padding:8px 14px;border:1px solid var(--accent);border-radius:4px;color:var(--accent);text-decoration:none;font-weight:600;font-size:14px;transition:background .15s}
+.doc-link::after{content:"↗";font-family:var(--font-mono)}
+.doc-link small{font-family:var(--font-mono);font-weight:400;font-size:11px;color:var(--muted)}
+.doc-link:hover{background:var(--accent-soft)}
+.doc-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chip.tool{display:inline-flex;align-items:center;gap:6px;border-color:color-mix(in srgb,var(--tc) 40%,var(--line));background:color-mix(in srgb,var(--tc) 9%,var(--surface))}
+.chip.tool::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--tc);flex:none}
+.echo{background:#06080C}
+.echo canvas{display:block;width:100%;height:100%;min-height:260px}
+.facts.compact{margin:0;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.facts.compact .fact{font-size:14px;font-variant-numeric:tabular-nums}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin:20px 0 6px}
+.stats div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+.stats b{font-family:var(--font-display);font-weight:400;font-size:28px;line-height:1.1;color:var(--accent);font-variant-numeric:tabular-nums}
+.stats span{font-size:13px;color:var(--muted)}
+.part.conclusion>div:last-child{background:var(--accent-soft);border-radius:4px;padding:16px 18px}
+.part.conclusion p{margin:0}
+@media (max-width:640px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tagline{margin:0;padding:10px 14px;border-left:3px solid var(--accent);background:var(--bg);font-weight:600;font-size:15px}
+.tagline span{display:block;margin-top:2px;font-weight:400;font-size:12px;color:var(--muted)}
+.tagline span::before{content:"* "}
+.title-wrap{display:flex;align-items:center;gap:14px;min-width:0}
+.app-icon{width:64px;height:64px;flex:none;border-radius:22%;object-fit:cover;box-shadow:0 0 0 1px var(--line)}
 .card h3 small{display:block;font-size:13px;font-weight:500;color:var(--muted);margin-top:2px}
 .status{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;padding:2px 8px;border-radius:3px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
 .desc{margin:0;color:var(--ink)}
@@ -162,7 +207,7 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
     <div class="skills">
       <div class="label">Tools</div>
       <div class="chips">
-        <span class="chip">Unity</span><span class="chip">C#</span><span class="chip">Notion</span><span class="chip">Figma</span><span class="chip">3D 프린터</span>
+        <span class="chip tool" style="--tc:var(--t-unity)">Unity</span><span class="chip tool" style="--tc:var(--t-cs)">C#</span><span class="chip tool" style="--tc:var(--t-notion)">Notion</span><span class="chip tool" style="--tc:var(--t-figma)">Figma</span><span class="chip tool" style="--tc:var(--t-print)">3D 프린터</span>
       </div>
     </div>
   </aside>
@@ -177,8 +222,13 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
         <div class="period">2026.03</div>
         <div>
           <h3>크래프톤</h3>
-          <p class="meta">QA 게임 테스트</p>
-          <ul><li>AI와 한 팀을 이뤄 'PUBG: 배틀그라운드'를 플레이하며 대화 수행</li></ul>
+          <p class="meta">QA 플레이 테스트 · 아르바이트</p>
+          <p class="note">'PUBG: 배틀그라운드'에서 개발 중인 AI 동료 '엘라'와 듀오를 이뤄 실제 경기를 플레이하는 테스트에 참여했다.</p>
+          <ul>
+            <li>엘라와 대화로 소통하며 함께 작전을 짜고 경기를 진행</li>
+            <li>엘라가 경기 중 얻은 정보를 전달받으며 플레이. 테스트 단계라 정보가 부정확한 경우도 있었음</li>
+            <li>플레이어 입장에서 AI 동료와 한 팀으로 게임하는 경험을 직접 체험</li>
+          </ul>
         </div>
       </div>
 
@@ -194,7 +244,7 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
 
       <div class="sub">자격증</div>
       <div class="row">
-        <div class="period">취득</div>
+        <div class="period">2026.06.19</div>
         <div><h3>ITQ 한글 · ITQ 엑셀</h3><p class="meta">기획 문서 작성과 데이터 정리 실무 역량</p></div>
       </div>
     </section>
@@ -204,29 +254,53 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
       <div class="sec-head"><h2>프로젝트</h2><span class="en">PROJECTS</span><span class="count">4개</span></div>
 
       <div class="projects">
-        <article class="card feature">
-          <div class="card-top">
-            <h3>Blind Echo<small>캡스톤디자인 · 팀 Storm Meteor</small></h3>
-            <span class="status">진행 중 · 2026.08 –</span>
+        <article class="card feature media">
+          <figure class="shot echo">
+            <canvas id="echo" aria-hidden="true"></canvas>
+            <figcaption>파동 연출 컨셉 · 실제 게임 화면 아님</figcaption>
+          </figure>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Blind Echo<small>캡스톤디자인 · 팀 Storm Meteor</small></h3>
+              <span class="status">제작 중 · 2026.08 –</span>
+            </div>
+            <p class="desc">모두가 앞을 볼 수 없는 상태에서, 파동(에코로케이션)으로 지형과 상대의 위치를 찾아내는 1 vs N 비대칭 심리 술래잡기.</p>
+            <dl class="spec">
+              <dt>장르</dt><dd>비대칭 공포 · 심리 술래잡기 (술래 1 vs 도망자 N)</dd>
+              <dt>역할</dt><dd>서브 기획, QA, 문서 정리</dd>
+              <dt>참고</dt><dd>Stifled, Dark Echo, 전통 놀이 '지옥탈출'</dd>
+            </dl>
+            <div class="facts compact">
+              <div class="fact"><b>파동 쿨타임</b>술래 2초 · 도망자 1초</div>
+              <div class="fact"><b>파동 반경</b>8 – 10m</div>
+              <div class="fact"><b>유지 시간</b>1 – 1.5초</div>
+            </div>
+            <ul>
+              <li>우클릭 파동을 쏘면 쏜 사람의 위치와 주변 지형이 모든 플레이어 화면에 드러나는 '전역 시야 공유' 구조로, 길을 찾을수록 들킬 위험도 커지도록 설계</li>
+              <li>도망자는 걷기(발소리 파동 발생)와 앉기(파동 없이 은신) 중 선택해 긴장감을 조절</li>
+              <li>게임 카테고리 기획과 Notion 기획 문서 정리</li>
+            </ul>
+            <div class="chips"><span class="chip tool" style="--tc:var(--t-unity)">Unity</span><span class="chip tool" style="--tc:var(--t-cs)">C#</span><span class="chip tool" style="--tc:var(--t-notion)">Notion</span></div>
           </div>
-          <p class="desc">눈이 보이지 않는 상태에서 파동(에코로케이션)으로 서로의 위치를 찾는 1 vs N 비대칭 심리 술래잡기 게임.</p>
-          <dl class="spec">
-            <dt>분류</dt><dd>기획 / 문서</dd>
-            <dt>역할</dt><dd>서브 기획, QA, 문서 정리</dd>
-          </dl>
-          <ul>
-            <li>게임 카테고리 기획</li>
-            <li>Notion 기획 문서 제작</li>
-          </ul>
-          <div class="chips"><span class="chip">Unity</span><span class="chip">C#</span><span class="chip">Notion</span></div>
         </article>
 
-        <article class="card">
+        <article class="card feature media">
+          <figure class="shot">
+            <img src="assets/img/pharmacy-play-01.jpg" alt="약국 카운터 앞에 손님 두 명이 대기 중이고, 안쪽 바닥에 쓰러진 손님이 있는 플레이 화면. 좌측 상단에 일차·시간·보유금, 우측에 아이템 슬롯이 보인다" width="1280" height="716" loading="lazy">
+            <figcaption>플레이 화면 · 손님 응대 중 쓰러진 손님 발생</figcaption>
+          </figure>
+          <div class="card-body">
           <div class="card-top">
-            <h3>내 약국엔 정상이 없다<small>Project Pharmacy</small></h3>
+            <div class="title-wrap">
+              <img class="app-icon" src="assets/img/pharmacy-icon.png" alt="내 약국엔 정상이 없다 게임 아이콘: 약국 진열대 앞에 흰 가운을 입은 로우폴리 약사 캐릭터" width="64" height="64">
+              <h3>내 약국엔 정상이 없다<small>Project Pharmacy</small></h3>
+            </div>
             <span class="status">2026.03 – 06</span>
           </div>
+          <p class="desc">손님의 엉뚱한 대사만 듣고 어떤 약이 필요한지 추리해 처방하는 병맛 약국 경영 시뮬레이션.</p>
+          <blockquote class="tagline">정상 진료는 없습니다. 정상 손님도 없습니다.<span>부작용에 대한 환불, 교환은 없습니다</span></blockquote>
           <dl class="spec">
+            <dt>장르</dt><dd>약국 경영 시뮬레이션 · 추리</dd>
             <dt>분류</dt><dd>기획 / 문서</dd>
             <dt>역할</dt><dd>기획, 사운드 제작</dd>
           </dl>
@@ -234,39 +308,84 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
             <li>게임 플레이 설계 기획</li>
             <li>장면별 사운드 제작</li>
           </ul>
-          <div class="chips"><span class="chip">Unity</span><span class="chip">C#</span><span class="chip">Notion</span></div>
+          <div class="chips"><span class="chip tool" style="--tc:var(--t-unity)">Unity</span><span class="chip tool" style="--tc:var(--t-cs)">C#</span><span class="chip tool" style="--tc:var(--t-notion)">Notion</span></div>
+          </div>
         </article>
 
-        <article class="card">
-          <div class="card-top">
-            <h3>Last Warrior Standing<small>보드게임</small></h3>
-            <span class="status">2025.08 – 12</span>
+        <article class="card feature media flip">
+          <div class="gallery pix">
+            <figure class="shot">
+              <img class="pixel g-main" src="assets/img/chill-play-pipe.png" alt="2스테이지 플레이 화면. 칠가이 앞에 아래 화살표가 붙은 초록 파이프가 있다" width="820" height="634" loading="lazy">
+              <figcaption class="g-cap">함정 파이프 · 들어가고 싶게 만든 가짜 비밀통로</figcaption>
+            </figure>
+            <div class="thumbs" role="group" aria-label="칠가이의 모험 스크린샷">
+              <button type="button" class="thumb on" aria-pressed="true" data-src="assets/img/chill-play-pipe.png" data-w="820" data-h="634" data-cap="함정 파이프 · 들어가고 싶게 만든 가짜 비밀통로" data-alt="2스테이지 플레이 화면. 칠가이 앞에 아래 화살표가 붙은 초록 파이프가 있다"><img src="assets/img/chill-play-pipe.png" alt="" loading="lazy"></button>
+              <button type="button" class="thumb" aria-pressed="false" data-src="assets/img/chill-play-tissue.png" data-w="798" data-h="570" data-cap="가짜 휴지 · 먹으러 가면 투명 블록에 갇힘" data-alt="계단 아래 각티슈 아이템이 놓인 플레이 화면"><img src="assets/img/chill-play-tissue.png" alt="" loading="lazy"></button>
+              <button type="button" class="thumb" aria-pressed="false" data-src="assets/img/chill-title.png" data-w="728" data-h="407" data-cap="시작 화면 · START와 CHILL 메뉴" data-alt="칠가이 캐릭터와 START, CHILL 버튼이 있는 시작 화면"><img src="assets/img/chill-title.png" alt="" loading="lazy"></button>
+            </div>
           </div>
-          <dl class="spec">
-            <dt>분류</dt><dd>보드게임</dd>
-            <dt>역할</dt><dd>보드게임 제작, 테스트</dd>
-          </dl>
-          <ul>
-            <li>게임 판과 카드 제작</li>
-            <li>플레이 테스트 및 캐릭터 밸런싱</li>
-          </ul>
-          <div class="chips"><span class="chip">3D 프린터</span><span class="chip">폼보드</span></div>
+          <div class="card-body">
+            <div class="card-top">
+              <div class="title-wrap">
+                <img class="app-icon pixel" src="assets/img/chill-icon.png" alt="칠가이 도트 캐릭터" width="64" height="64">
+                <h3>칠가이의 모험<small>PBL 프로젝트 · 게임엔진응용</small></h3>
+              </div>
+              <span class="status">2025.08 – 12 · 완성</span>
+            </div>
+            <p class="desc">평온한 표정의 밈 캐릭터 '칠가이'가 화장실을 찾아가다 어이없는 함정에 계속 죽는 2D 트롤 플랫포머.</p>
+            <dl class="spec">
+              <dt>분류</dt><dd>기획 / 문서</dd>
+              <dt>역할</dt><dd>함정 · 스토리 · 스테이지 기획, PBL 보고서 · PPT</dd>
+              <dt>팀</dt><dd>4명</dd>
+              <dt>결과</dt><dd>2스테이지와 엔딩까지 완성 (미출시)</dd>
+            </dl>
+            <ul>
+              <li>함정 6종 설계: 투명 스파이크, 사라지는 블록, 투명 블록, 떨어지는 블록, 죽는 파이프, 가짜 휴지 가두기</li>
+              <li>휴지 획득에서 공중 화장실 도착으로 이어지는 2스테이지 구성, 뒤로 갈수록 함정이 겹치도록 설계</li>
+              <li>화장실 도착 후 반전으로 끝나는 엔딩 스토리 기획</li>
+              <li>아이디어 평가(창의성 · 제작 용이성 · 협업 가능성)에서 70점으로 후보 2개 중 선정</li>
+            </ul>
+            <a class="doc-link" href="docs/chillguy-pbl-report.pdf" target="_blank" rel="noopener">
+              <span>PBL 결과보고서</span><small>PDF · 13쪽</small>
+            </a>
+            <div class="chips"><span class="chip tool" style="--tc:var(--t-unity)">Unity</span><span class="chip tool" style="--tc:var(--t-cs)">C#</span><span class="chip tool" style="--tc:var(--t-figma)">Figma</span></div>
+          </div>
         </article>
 
-        <article class="card feature">
-          <div class="card-top">
-            <h3>칠가이의 모험<small>PBL 프로젝트</small></h3>
-            <span class="status">2025.08 – 12</span>
+        <article class="card feature media">
+          <div class="gallery">
+            <figure class="shot">
+              <img class="g-main" src="assets/img/lws-board.jpg" alt="마을, 숲, 설원 세 층을 계단처럼 쌓아 올린 입체 보드판. 가장자리를 따라 원형 칸이 이어지고 맨 위 중앙에 세계수 블록이 있다" width="1100" height="1100" loading="lazy">
+              <figcaption class="g-cap">보드판 · 마을 · 숲 · 설원 3단 구조</figcaption>
+            </figure>
+            <div class="thumbs" role="group" aria-label="Last Warrior Standing 사진">
+              <button type="button" class="thumb on" aria-pressed="true" data-src="assets/img/lws-board.jpg" data-w="1100" data-h="1100" data-cap="보드판 · 마을 · 숲 · 설원 3단 구조" data-alt="마을, 숲, 설원 세 층을 계단처럼 쌓아 올린 입체 보드판. 가장자리를 따라 원형 칸이 이어지고 맨 위 중앙에 세계수 블록이 있다"><img src="assets/img/lws-board.jpg" alt="" loading="lazy"></button>
+              <button type="button" class="thumb" aria-pressed="false" data-src="assets/img/lws-cards.jpg" data-w="1100" data-h="1100" data-cap="카드 · 황금, 일반, 고유 세 가지 분류" data-alt="닭 그림의 카드, 공격 · 방어 · 이동 카드, 화살비 · 창 던지기 · 발도 같은 캐릭터 카드가 펼쳐져 있다"><img src="assets/img/lws-cards.jpg" alt="" loading="lazy"></button>
+              <button type="button" class="thumb" aria-pressed="false" data-src="assets/img/lws-figures.jpg" data-w="1200" data-h="676" data-cap="말 · 궁수, 검사, 바이킹, 전사 (3D 출력)" data-alt="검은 필라멘트로 3D 출력한 궁수, 검사, 바이킹, 전사 캐릭터 말 네 개"><img src="assets/img/lws-figures.jpg" alt="" loading="lazy"></button>
+            </div>
           </div>
-          <dl class="spec">
-            <dt>분류</dt><dd>기획 / 문서</dd>
-            <dt>역할</dt><dd>게임 기획, 문서</dd>
-          </dl>
-          <ul>
-            <li>게임 및 스토리 기획</li>
-            <li>PBL 보고서와 발표 PPT 작업</li>
-          </ul>
-          <div class="chips"><span class="chip">Unity</span><span class="chip">C#</span><span class="chip">Figma</span><span class="chip">Notion</span></div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>Last Warrior Standing<small>보드게임</small></h3>
+              <span class="status">2025.08 – 12 · 완성</span>
+            </div>
+            <p class="desc">4명이 궁수, 검사, 바이킹, 전사 중 하나를 맡아, 마을 · 숲 · 설원 세 층으로 쌓은 입체 보드 위에서 카드로 겨루는 전략 보드게임.</p>
+            <dl class="spec">
+              <dt>분류</dt><dd>보드게임</dd>
+              <dt>역할</dt><dd>보드게임 제작, 테스트</dd>
+            </dl>
+            <div class="facts compact">
+              <div class="fact"><b>플레이 인원</b>4명</div>
+              <div class="fact"><b>캐릭터</b>궁수 · 검사 · 바이킹 · 전사</div>
+              <div class="fact"><b>카드 분류</b>황금 · 일반 · 고유</div>
+            </div>
+            <ul>
+              <li>보드판 3단 구조 제작, 카드를 황금 · 일반 · 고유로 나눠 디자인하고 카드마다 효과 범위를 격자로 표시</li>
+              <li>3D 프린터로 캐릭터 말 출력, 폼보드로 입체 보드 제작</li>
+              <li>반복 플레이 테스트로 캐릭터 간 밸런스 조정</li>
+            </ul>
+            <div class="chips"><span class="chip tool" style="--tc:var(--t-print)">3D 프린터</span><span class="chip tool" style="--tc:var(--t-board)">폼보드</span></div>
+          </div>
         </article>
       </div>
     </section>
@@ -282,6 +401,12 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
           <p>크래프톤의 '미메시스'를 대상으로 한 기간 한정 이벤트 기획. AI를 게임에 잘 녹여낸 사례라는 점에서 대상 게임으로 선정했다.</p>
         </div>
         <div class="doc-body">
+          <div class="stats">
+            <div><b>3주</b><span>이벤트 기간</span></div>
+            <div><b>3종</b><span>접속 보상 코스튬</span></div>
+            <div><b>4종</b><span>리스킨 아이템</span></div>
+            <div><b>0개</b><span>신규 재화</span></div>
+          </div>
           <div class="part">
             <div class="no">01</div>
             <div>
@@ -315,6 +440,13 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
                 <li><b>유저 재접속 유도</b><span>접속 보상으로 이탈 유저 복귀, 신규 유저 진입 장벽 완화</span></li>
                 <li><b>게임 본연의 재미 강화</b><span>코스튬으로 구분이 어려워져 불신과 심리전 요소 심화</span></li>
               </ul>
+            </div>
+          </div>
+          <div class="part conclusion">
+            <div class="no">03</div>
+            <div>
+              <h4>결론</h4>
+              <p>새 콘텐츠를 만들지 않고 기존 아이템 리스킨과 기존 크리에이터 챌린지 방식을 재활용해 개발 부담을 낮췄다. 동시에 코스튬이 플레이어 구분을 어렵게 만들어, 미메시스의 핵심인 "누가 진짜인가" 하는 의심을 오히려 키운다. 시즌 이벤트가 겉모습만 바꾸는 데 그치지 않고 게임 본연의 재미를 강화하도록 설계한 것이 이 기획의 핵심이다.</p>
             </div>
           </div>
         </div>
@@ -383,6 +515,13 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
               </ul>
             </div>
           </div>
+          <div class="part conclusion">
+            <div class="no">05</div>
+            <div>
+              <h4>결론</h4>
+              <p>트릭컬의 재미는 하나의 강력한 시스템이 아니라, 귀여운 캐릭터에 대한 애착이 전투와 스토리, 운영으로 이어지는 연결 구조에서 나온다. 특히 볼따구 터치처럼 작은 상호작용을 일상적인 화면 곳곳에 배치한 점이 다른 수집형 RPG와 구별되는 지점이다. 캐릭터 중심 게임을 기획할 때 "어떤 캐릭터를 만들까"만큼 "유저가 그 캐릭터와 얼마나 자주 닿게 할까"를 함께 설계해야 한다는 점을 확인했다.</p>
+            </div>
+          </div>
         </div>
       </article>
     </section>
@@ -406,6 +545,43 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)setOn(e.target.id)})},{rootMargin:'-35% 0px -60% 0px'});
     ['experience','projects','assignments'].forEach(function(id){io.observe(document.getElementById(id))});
+  }
+  [].forEach.call(document.querySelectorAll('.gallery'),function(g){
+    var main=g.querySelector('.g-main'),cap=g.querySelector('.g-cap');
+    [].forEach.call(g.querySelectorAll('.thumb'),function(b){
+      b.addEventListener('click',function(){
+        [].forEach.call(g.querySelectorAll('.thumb'),function(x){x.classList.remove('on');x.setAttribute('aria-pressed','false')});
+        b.classList.add('on');b.setAttribute('aria-pressed','true');
+        main.src=b.dataset.src;main.width=+b.dataset.w;main.height=+b.dataset.h;main.alt=b.dataset.alt;cap.textContent=b.dataset.cap;
+      });
+    });
+  });
+  var cv=document.getElementById('echo');
+  if(cv&&cv.getContext){
+    var ctx=cv.getContext('2d'),dpr=Math.min(window.devicePixelRatio||1,2),W=0,H=0,waves=[],last=0;
+    var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var walls=[[.08,.12,.30,.06],[.08,.12,.05,.50],[.55,.18,.06,.40],[.70,.62,.24,.06],[.25,.72,.22,.06],[.80,.10,.06,.30],[.38,.40,.10,.10]];
+    function size(){var r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+    function spawn(t){var red=Math.random()<.25;waves.push({x:(.15+Math.random()*.7)*W,y:(.15+Math.random()*.7)*H,t:t,red:red,life:red?1700:1400})}
+    function draw(t){
+      ctx.fillStyle='#06080C';ctx.fillRect(0,0,W,H);
+      var R=Math.max(W,H)*.42;
+      waves=waves.filter(function(w){return t-w.t<w.life});
+      waves.forEach(function(w){
+        var k=(t-w.t)/w.life,r=R*k,a=1-k,col=w.red?'255,70,70':'235,240,255';
+        walls.forEach(function(q){
+          var cx=(q[0]+q[2]/2)*W,cy=(q[1]+q[3]/2)*H,d=Math.hypot(cx-w.x,cy-w.y);
+          if(d<r){ctx.strokeStyle='rgba('+col+','+(a*.55)+')';ctx.lineWidth=1.2;ctx.strokeRect(q[0]*W,q[1]*H,q[2]*W,q[3]*H)}
+        });
+        ctx.beginPath();ctx.arc(w.x,w.y,r,0,7);ctx.strokeStyle='rgba('+col+','+a*.9+')';ctx.lineWidth=2;ctx.stroke();
+        ctx.beginPath();ctx.arc(w.x,w.y,r*.7,0,7);ctx.strokeStyle='rgba('+col+','+a*.3+')';ctx.lineWidth=1;ctx.stroke();
+        ctx.beginPath();ctx.arc(w.x,w.y,3,0,7);ctx.fillStyle='rgba('+col+','+a+')';ctx.fill();
+      });
+    }
+    function loop(t){if(t-last>900){spawn(t);last=t}draw(t);requestAnimationFrame(loop)}
+    size();window.addEventListener('resize',size);
+    if(reduce){waves=[{x:W*.45,y:H*.5,t:0,red:false,life:2}];draw(1.1)}
+    else requestAnimationFrame(loop);
   }
 })();
 </script>
