@@ -194,6 +194,19 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
   .doc-head,.doc-body{padding-inline:18px}
   .part{grid-template-columns:minmax(0,1fr);gap:4px}
 }
+/* 프로젝트 카드: 사진 위, 설명 아래 (상하 배치) */
+.card.media,.card.media.flip{grid-template-columns:minmax(0,1fr)}
+.card.media.flip .gallery{order:0}
+.card.media>.shot{min-height:0}
+.card.media .shot img{width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;max-height:540px}
+.gallery .shot{flex:none}
+.thumbs{justify-content:flex-start}
+.thumb{flex:0 0 clamp(72px,18%,128px)}
+.echo canvas{height:auto;min-height:0;aspect-ratio:16/6}
+.card.media .card-body{padding:24px 28px 28px}
+@media (max-width:640px){.card.media .card-body{padding:20px}.echo canvas{aspect-ratio:16/9}}
+.doc-cover{background:#0B0A14}
+.doc-cover img{display:block;width:100%;height:auto;aspect-ratio:auto;max-height:460px;object-fit:cover}
 </style>
 
 </head>
@@ -217,7 +230,7 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
     <div class="skills">
       <div class="label">Tools</div>
       <div class="chips">
-        <span class="chip tool" style="--tc:var(--t-unity)">Unity</span><span class="chip tool" style="--tc:var(--t-cs)">C#</span><span class="chip tool" style="--tc:var(--t-notion)">Notion</span><span class="chip tool" style="--tc:var(--t-figma)">Figma</span><span class="chip tool" style="--tc:var(--t-print)">3D 프린터</span>
+        <span class="chip tool" style="--tc:var(--t-unity)">Unity</span><span class="chip tool" style="--tc:var(--t-cs)">C#</span><span class="chip tool" style="--tc:var(--t-notion)">Notion</span><span class="chip tool" style="--tc:var(--t-figma)">Figma</span><span class="chip tool" style="--tc:var(--t-print)">3D 블렌더</span>
       </div>
     </div>
   </aside>
@@ -371,7 +384,7 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
             <div class="thumbs" role="group" aria-label="Last Warrior Standing 사진">
               <button type="button" class="thumb on" aria-pressed="true" data-src="assets/img/lws-board.jpg" data-w="1100" data-h="1100" data-cap="보드판 · 마을 · 숲 · 설원 3단 구조" data-alt="마을, 숲, 설원 세 층을 계단처럼 쌓아 올린 입체 보드판. 가장자리를 따라 원형 칸이 이어지고 맨 위 중앙에 세계수 블록이 있다"><img src="assets/img/lws-board.jpg" alt="" loading="lazy"></button>
               <button type="button" class="thumb" aria-pressed="false" data-src="assets/img/lws-cards-r.jpg" data-w="1100" data-h="1100" data-cap="카드 · 황금, 일반, 고유 세 가지 분류" data-alt="닭 그림의 카드, 공격 · 방어 · 이동 카드, 화살비 · 창 던지기 · 발도 같은 캐릭터 카드가 펼쳐져 있다"><img src="assets/img/lws-cards-r.jpg" alt="" loading="lazy"></button>
-              <button type="button" class="thumb" aria-pressed="false" data-src="assets/img/lws-figures.jpg" data-w="1200" data-h="676" data-cap="말 · 궁수, 검사, 바이킹, 전사 (3D 출력)" data-alt="검은 필라멘트로 3D 출력한 궁수, 검사, 바이킹, 전사 캐릭터 말 네 개"><img src="assets/img/lws-figures.jpg" alt="" loading="lazy"></button>
+              <button type="button" class="thumb" aria-pressed="false" data-src="assets/img/lws-figures.jpg" data-w="1200" data-h="676" data-cap="말 · 궁수, 검사, 바이킹, 전사 (직접 제작)" data-alt="직접 제작한 검은색 궁수, 검사, 바이킹, 전사 캐릭터 말 네 개"><img src="assets/img/lws-figures.jpg" alt="" loading="lazy"></button>
             </div>
           </div>
           <div class="card-body">
@@ -391,10 +404,10 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
             </div>
             <ul>
               <li>보드판 3단 구조 제작, 카드를 황금 · 일반 · 고유로 나눠 디자인하고 카드마다 효과 범위를 격자로 표시</li>
-              <li>3D 프린터로 캐릭터 말 출력, 폼보드로 입체 보드 제작</li>
+              <li>3D 블렌더로 캐릭터 말 제작, 폼보드로 입체 보드 제작</li>
               <li>반복 플레이 테스트로 캐릭터 간 밸런스 조정</li>
             </ul>
-            <div class="chips"><span class="chip tool" style="--tc:var(--t-print)">3D 프린터</span><span class="chip tool" style="--tc:var(--t-board)">폼보드</span></div>
+            <div class="chips"><span class="chip tool" style="--tc:var(--t-print)">3D 블렌더</span><span class="chip tool" style="--tc:var(--t-board)">폼보드</span></div>
           </div>
         </article>
       </div>
@@ -405,6 +418,10 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
       <div class="sec-head"><h2>과제</h2><span class="en">ASSIGNMENTS</span><span class="count">2개</span></div>
 
       <article class="doc">
+        <figure class="shot doc-cover">
+          <img src="assets/img/mimesis-halloween.jpg" alt="호박 머리, 마녀 모자, 유령 천을 쓴 MIMESIS 캐릭터들이 안개 낀 밤 철로 위에 서 있는 할로윈 이미지" width="1024" height="575" loading="lazy">
+          <figcaption>MIMESIS 할로윈 시즌 이미지</figcaption>
+        </figure>
         <div class="doc-head">
           <div class="label">게임 이벤트 기획서 · 트렌드 코리아 2026</div>
           <h3>MIMESIS 할로윈 시즌 이벤트</h3>
@@ -575,7 +592,7 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
   var lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap'),lastFocus=null;
   function openLb(img){var fig=img.closest('figure'),cap=fig&&fig.querySelector('figcaption');lbImg.src=img.currentSrc||img.src;lbImg.alt=img.alt;lbCap.textContent=cap?cap.textContent:'';lastFocus=document.activeElement;lb.hidden=false;document.getElementById('lbClose').focus()}
   function closeLb(){lb.hidden=true;lbImg.removeAttribute('src');if(lastFocus)lastFocus.focus()}
-  [].forEach.call(document.querySelectorAll('.card .shot img'),function(img){
+  [].forEach.call(document.querySelectorAll('.card .shot img, .doc .shot img'),function(img){
     img.classList.add('zoomable');img.tabIndex=0;img.setAttribute('role','button');
     img.addEventListener('click',function(){openLb(img)});
     img.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openLb(img)}});
