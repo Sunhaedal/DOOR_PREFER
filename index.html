@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: 좌측 고정 프로필 패널 + 우측 스크롤 본문(경험 / 프로젝트 / 과제). 모바일에선 프로필 → 상단 고정 탭 → 본문 순으로 쌓임 */
+/* Layout: 좌측 고정 프로필 패널 + 우측 스크롤 본문(경험 / 프로젝트 / 게임 분석). 모바일에선 프로필 → 상단 고정 탭 → 본문 순으로 쌓임 */
 :root{
   --bg:#ECEFF4;
   --surface:#FFFFFF;
@@ -207,6 +207,15 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
 @media (max-width:640px){.card.media .card-body{padding:20px}.echo canvas{aspect-ratio:16/9}}
 .doc-cover{background:#0B0A14}
 .doc-cover img{display:block;width:100%;height:auto;aspect-ratio:auto;max-height:460px;object-fit:cover}
+/* 과제 목록: 제목 버튼 → 상세 페이지 */
+.assign-list{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
+.assign-btn{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 16px;align-items:baseline;padding:18px 22px;background:var(--surface);border:1px solid var(--line);border-radius:6px;color:var(--ink);text-decoration:none;transition:border-color .2s,transform .2s}
+.assign-btn::after{content:"→";grid-column:2;grid-row:1/4;align-self:center;font-family:var(--font-mono);font-size:20px;color:var(--accent)}
+.assign-btn:hover{border-color:var(--accent);transform:translateY(-2px)}
+.assign-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.assign-tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;color:var(--muted)}
+.assign-title{font-size:19px;font-weight:700;text-wrap:balance}
+.assign-desc{color:var(--muted);font-size:14px}
 </style>
 
 </head>
@@ -225,7 +234,7 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
     <nav class="nav" aria-label="섹션 이동">
       <a href="#experience">경험 <small>EXPERIENCE</small></a>
       <a href="#projects">프로젝트 <small>PROJECTS</small></a>
-      <a href="#assignments">과제 <small>ASSIGNMENTS</small></a>
+      <a href="#assignments">게임 분석 <small>GAME ANALYSIS</small></a>
     </nav>
     <div class="skills">
       <div class="label">Tools</div>
@@ -415,142 +424,25 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
 
     <!-- ================= 과제 ================= -->
     <section id="assignments">
-      <div class="sec-head"><h2>과제</h2><span class="en">ASSIGNMENTS</span><span class="count">2개</span></div>
+      <div class="sec-head"><h2>게임 분석</h2><span class="en">GAME ANALYSIS</span><span class="count">3개</span></div>
 
-      <article class="doc">
-        <figure class="shot doc-cover">
-          <img src="assets/img/mimesis-halloween.jpg" alt="호박 머리, 마녀 모자, 유령 천을 쓴 MIMESIS 캐릭터들이 안개 낀 밤 철로 위에 서 있는 할로윈 이미지" width="1024" height="575" loading="lazy">
-          <figcaption>MIMESIS 할로윈 시즌 이미지</figcaption>
-        </figure>
-        <div class="doc-head">
-          <div class="label">게임 이벤트 기획서 · 트렌드 코리아 2026</div>
-          <h3>MIMESIS 할로윈 시즌 이벤트</h3>
-          <p>크래프톤의 '미메시스'를 대상으로 한 기간 한정 이벤트 기획. AI를 게임에 잘 녹여낸 사례라는 점에서 대상 게임으로 선정했다.</p>
-        </div>
-        <div class="doc-body">
-          <div class="stats">
-            <div><b>3주</b><span>이벤트 기간</span></div>
-            <div><b>3종</b><span>접속 보상 코스튬</span></div>
-            <div><b>4종</b><span>리스킨 아이템</span></div>
-            <div><b>0개</b><span>신규 재화</span></div>
-          </div>
-          <div class="part">
-            <div class="no">01</div>
-            <div>
-              <h4>세부 운영안</h4>
-              <div class="facts">
-                <div class="fact"><b>이벤트 기간</b>10월 중순 – 11월 초 (약 3주)</div>
-                <div class="fact"><b>접속 보상</b>할로윈 코스튬 1종 즉시 지급 (호박 / 유령 / 마녀 중 택1)</div>
-              </div>
-              <p><strong>정비소 상점 개편.</strong> 기존 아이템을 할로윈 테마로 리스킨해 기간 한정으로 진열한다. 기존 게임 재화로 구매하며 신규 화폐는 도입하지 않는다.</p>
-              <div class="table-wrap">
-                <table class="reskin">
-                  <thead><tr><th>기존 아이템</th><th>할로윈 리스킨</th><th>변경 컨셉</th></tr></thead>
-                  <tbody>
-                    <tr><td>나침반</td><td>저주받은 나침반</td><td>바늘이 미메시스 방향을 가리키는 듯한 연출 추가</td></tr>
-                    <tr><td>전기 파리채</td><td>마녀의 빗자루</td><td>감전 이펙트를 보라색 마법 이펙트로 변경</td></tr>
-                    <tr><td>시끄러운 닭</td><td>유령 까마귀</td><td>미메시스 접근 시 울음소리를 까마귀 소리로 변경</td></tr>
-                    <tr><td>디톡스 주스</td><td>마녀의 물약</td><td>병 디자인만 변경, 효과는 동일</td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <p><strong>크리에이터 챌린지 연계.</strong> "미메시스를 가장 완벽하게 흉내 낸 클립" 공모전. 크래프톤 크리에이터 네트워크(KCN) 챌린지 방식을 그대로 활용한다.</p>
-            </div>
-          </div>
-          <div class="part">
-            <div class="no">02</div>
-            <div>
-              <h4>기대 효과</h4>
-              <ul class="effects">
-                <li><b>시즌성 화제 콘텐츠 확보</b><span>SNS와 커뮤니티 언급량 증가</span></li>
-                <li><b>재화 소비 촉진</b><span>기간 한정 리스킨의 희소성으로 소장 욕구 자극</span></li>
-                <li><b>유저 재접속 유도</b><span>접속 보상으로 이탈 유저 복귀, 신규 유저 진입 장벽 완화</span></li>
-                <li><b>게임 본연의 재미 강화</b><span>코스튬으로 구분이 어려워져 불신과 심리전 요소 심화</span></li>
-              </ul>
-            </div>
-          </div>
-          <div class="part conclusion">
-            <div class="no">03</div>
-            <div>
-              <h4>결론</h4>
-              <p>새 콘텐츠를 만들지 않고 기존 아이템 리스킨과 기존 크리에이터 챌린지 방식을 재활용해 개발 부담을 낮췄다. 동시에 코스튬이 플레이어 구분을 어렵게 만들어, 미메시스의 핵심인 "누가 진짜인가" 하는 의심을 오히려 키운다. 시즌 이벤트가 겉모습만 바꾸는 데 그치지 않고 게임 본연의 재미를 강화하도록 설계한 것이 이 기획의 핵심이다.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-
-      <article class="doc">
-        <div class="doc-head">
-          <div class="label">게임 분석 · 재미요소 분석</div>
-          <h3>트릭컬 리바이브의 재미요소</h3>
-          <p>귀여운 외형의 수집형 RPG가 어떻게 유저를 붙잡아 두는지, 재미요소 네 가지를 MDA 관점(메카닉 · 다이내믹 · 감성)으로 나눠 분석하고 기획적 시사점을 정리했다.</p>
-        </div>
-        <div class="doc-body">
-          <div class="part">
-            <div class="no">01</div>
-            <div>
-              <h4>분석 개요</h4>
-              <div class="facts">
-                <div class="fact"><b>장르</b>수집형 RPG</div>
-                <div class="fact"><b>분석 틀</b>MDA 프레임워크</div>
-                <div class="fact"><b>분석 축</b>교감 · 성장 · 서사 · 운영</div>
-              </div>
-              <p>네 가지 재미는 서로 다른 층위에서 작동한다. 캐릭터 교감과 스토리는 감정적 애착을, 인게임 성장은 반복 플레이의 동기를, 운영과 소통은 장기적인 신뢰를 만든다.</p>
-            </div>
-          </div>
-          <div class="part">
-            <div class="no">02</div>
-            <div>
-              <h4>재미요소 네 가지</h4>
-              <div class="table-wrap">
-                <table class="fun">
-                  <thead><tr><th>재미요소</th><th>내용</th><th>유저가 느끼는 재미</th></tr></thead>
-                  <tbody>
-                    <tr><td>볼따구 터치와 비주얼</td><td>컷신, 게임 설명 등 곳곳에서 캐릭터의 볼을 잡아당길 수 있는 독보적인 연출</td><td>직접 만지는 상호작용으로 캐릭터와 교감하고 애착이 생김</td></tr>
-                    <tr><td>오토체스식 인게임 성장</td><td>전투 중 캐릭터 구매, 레벨업, 리롤을 거치며 매 판 달라지는 빌드업</td><td>같은 콘텐츠도 매번 다른 조합을 시도하는 전략적 선택의 재미</td></tr>
-                    <tr><td>B급 매운맛 스토리</td><td>귀여운 외형과 대비되는 씁쓸하고 엉뚱한 블랙 유머, 밈 패러디 중심 서사</td><td>예상을 깨는 반전에서 오는 웃음과 다음 이야기에 대한 기대</td></tr>
-                    <tr><td>유저 친화적 운영</td><td>개발사의 적극적인 소통, 넉넉한 보상, 부담 없는 일일 숙제</td><td>피로감 없이 꾸준히 접속하고, 게임과 개발사를 신뢰하게 됨</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <div class="part">
-            <div class="no">03</div>
-            <div>
-              <h4>재미가 이어지는 구조</h4>
-              <p>각 요소는 따로 작동하지 않고 하나의 순환으로 연결된다.</p>
-              <div class="loop">
-                <span>스토리 · 비주얼로 캐릭터에 호감</span><i>→</i>
-                <span>볼따구 교감으로 애착 형성</span><i>→</i>
-                <span>그 캐릭터로 전투 빌드업</span><i>→</i>
-                <span>넉넉한 보상 · 가벼운 숙제로 재접속</span><i>↺</i>
-              </div>
-              <p>특히 볼따구 터치는 별도 콘텐츠가 아니라 컷신과 설명 화면 같은 일상적인 순간에 녹아 있어, 플레이 내내 캐릭터와의 거리를 좁혀 준다.</p>
-            </div>
-          </div>
-          <div class="part">
-            <div class="no">04</div>
-            <div>
-              <h4>기획적 시사점</h4>
-              <ul class="effects">
-                <li><b>상호작용은 일상 화면에 녹인다</b><span>교감 요소를 전용 메뉴에 가두지 않고 자주 보는 화면에 배치하면 체감 빈도가 높아진다</span></li>
-                <li><b>대비가 개성을 만든다</b><span>귀여운 외형과 매운 스토리처럼 예상과 어긋나는 조합이 게임을 기억에 남게 한다</span></li>
-                <li><b>반복 콘텐츠에 변수를 준다</b><span>리롤과 빌드 선택 같은 매 판의 변수가 반복 플레이의 지루함을 줄인다</span></li>
-                <li><b>운영도 재미의 일부다</b><span>숙제 부담을 낮추고 보상을 넉넉히 주는 운영이 장기 리텐션을 지탱한다</span></li>
-              </ul>
-            </div>
-          </div>
-          <div class="part conclusion">
-            <div class="no">05</div>
-            <div>
-              <h4>결론</h4>
-              <p>트릭컬의 재미는 하나의 강력한 시스템이 아니라, 귀여운 캐릭터에 대한 애착이 전투와 스토리, 운영으로 이어지는 연결 구조에서 나온다. 특히 볼따구 터치처럼 작은 상호작용을 일상적인 화면 곳곳에 배치한 점이 다른 수집형 RPG와 구별되는 지점이다. 캐릭터 중심 게임을 기획할 때 "어떤 캐릭터를 만들까"만큼 "유저가 그 캐릭터와 얼마나 자주 닿게 할까"를 함께 설계해야 한다는 점을 확인했다.</p>
-            </div>
-          </div>
-        </div>
-      </article>
+      <ul class="assign-list">
+        <li><a class="assign-btn" href="assignments/mimesis.html">
+          <span class="assign-tag">게임 이벤트 기획서</span>
+          <span class="assign-title">MIMESIS 할로윈 시즌 이벤트</span>
+          <span class="assign-desc">크래프톤 '미메시스'의 기간 한정 할로윈 이벤트 기획</span>
+        </a></li>
+        <li><a class="assign-btn" href="assignments/trickcal.html">
+          <span class="assign-tag">재미요소 분석</span>
+          <span class="assign-title">트릭컬 리바이브의 재미요소</span>
+          <span class="assign-desc">수집형 RPG의 재미요소 네 가지를 MDA 관점으로 분석</span>
+        </a></li>
+        <li><a class="assign-btn" href="assignments/nikke.html">
+          <span class="assign-tag">매출 분석</span>
+          <span class="assign-title">니케 4주년 업데이트 매출 상승 분석</span>
+          <span class="assign-desc">구글플레이 매출 순위가 38위에서 4위로 오른 이유</span>
+        </a></li>
+      </ul>
     </section>
   </main>
 

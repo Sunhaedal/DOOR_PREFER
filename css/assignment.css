@@ -1,0 +1,88 @@
+/* 과제 상세 페이지 공통 스타일 (index.html과 같은 디자인 토큰 사용) */
+:root{
+  --bg:#ECEFF4;--surface:#FFFFFF;--ink:#131926;--muted:#5A6476;--line:#D2D8E2;--accent:#2B45E6;--accent-soft:#E2E7FF;
+  --font-display:"Black Han Sans","IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --font-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono","IBM Plex Sans KR",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E121A;--surface:#161C27;--ink:#E7EBF2;--muted:#98A2B4;--line:#283041;--accent:#8496FF;--accent-soft:#1E2747;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0E121A;--surface:#161C27;--ink:#E7EBF2;--muted:#98A2B4;--line:#283041;--accent:#8496FF;--accent-soft:#1E2747;color-scheme:dark}
+
+*{box-sizing:border-box}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.page{max-width:860px;margin:0 auto;padding:28px 20px 72px}
+.back{display:inline-flex;align-items:center;gap:8px;margin-bottom:20px;padding:8px 14px;border:1px solid var(--line);border-radius:4px;background:var(--surface);color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;transition:border-color .15s,color .15s}
+.back:hover{border-color:var(--accent);color:var(--accent)}
+.back:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.doc{background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.doc-head{padding:28px 28px 22px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+.doc-head h1{margin:0;font-size:26px;font-weight:700;line-height:1.35;text-wrap:balance}
+.doc-head p{margin:0;color:var(--muted);max-width:62ch}
+.label{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.doc-body{padding:8px 28px 28px}
+.doc-cover{margin:0;background:#0B0A14}
+.doc-cover img{display:block;width:100%;height:auto;max-height:460px;object-fit:cover}
+.doc-cover figcaption{padding:6px 14px;font-family:var(--font-mono);font-size:11px;color:#C9CFDB;background:#0B0A14}
+
+.part{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:22px 0;border-bottom:1px solid var(--line)}
+.part:last-child{border-bottom:0}
+.no{font-family:var(--font-mono);font-size:13px;color:var(--accent);padding-top:3px}
+.part h2{margin:0 0 10px;font-size:17px}
+.part h3{margin:18px 0 6px;font-size:15px}
+.part p{margin:0 0 8px;max-width:65ch}
+.part ul,.part ol{margin:6px 0 10px;padding-left:20px;max-width:65ch}
+.part li{margin:3px 0}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:16px}
+.fact{border-left:2px solid var(--accent);padding:2px 0 2px 12px}
+.fact b{display:block;font-size:12px;font-family:var(--font-mono);font-weight:500;color:var(--muted);letter-spacing:.06em}
+.table-wrap{overflow-x:auto;margin:6px 0 14px}
+table{border-collapse:collapse;width:100%;min-width:480px;font-size:14px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;color:var(--muted);font-weight:500;text-transform:uppercase}
+.reskin td:nth-child(2){font-weight:600;color:var(--accent);white-space:nowrap}
+.fun td:first-child{font-weight:600;white-space:nowrap}
+.fun td:last-child{color:var(--muted)}
+.rank td:first-child{white-space:nowrap}
+.rank td:nth-child(3){font-weight:600;color:var(--accent);white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin:20px 0 6px}
+.stats div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+.stats b{font-family:var(--font-display);font-weight:400;font-size:28px;line-height:1.1;color:var(--accent)}
+.stats span{font-size:13px;color:var(--muted)}
+.loop{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:4px 0 14px;font-size:14px}
+.loop span{padding:6px 12px;border:1px solid var(--line);border-radius:4px;background:var(--bg)}
+.loop i{font-style:normal;color:var(--accent);font-family:var(--font-mono)}
+.effects{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.effects li{padding:14px 16px;border:1px solid var(--line);border-radius:4px;margin:0}
+.effects b{display:block;margin-bottom:2px}
+.effects span{color:var(--muted);font-size:14px}
+.note{margin:12px 0 0;padding:10px 14px;border-left:3px solid var(--line);background:var(--bg);color:var(--muted);font-size:14px;max-width:65ch}
+.part.conclusion>div:last-child{background:var(--accent-soft);border-radius:4px;padding:16px 18px}
+.part.conclusion p{margin:0}
+.sources{font-size:14px;word-break:break-all}
+footer{margin-top:24px;font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+
+@media (max-width:640px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .effects{grid-template-columns:minmax(0,1fr)}
+  .doc-head,.doc-body{padding-inline:18px}
+  .part{grid-template-columns:minmax(0,1fr);gap:4px}
+}
+
+/* 순위 꺾은선 그래프 */
+.chart-fig{margin:6px 0 16px}
+.chart{display:block;width:100%;height:auto;max-width:740px}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .tick,.chart .axis,.chart .val,.chart .marktext{font-family:var(--font-mono);font-size:12px;fill:var(--muted)}
+.chart .axis{font-size:11px}
+.chart .line{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.chart .dot{fill:var(--surface);stroke:var(--accent);stroke-width:2.5}
+.chart .dot.hi{fill:var(--accent)}
+.chart .val.hi{fill:var(--accent);font-weight:700}
+.chart .mark{stroke:var(--muted);stroke-width:1;stroke-dasharray:4 4}
+.chart-fig figcaption{margin-top:6px;font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.rank-daily td,.rank-daily th{padding:8px 6px;text-align:center}
+@media (max-width:640px){.chart .tick,.chart .val,.chart .marktext{font-size:15px}}
