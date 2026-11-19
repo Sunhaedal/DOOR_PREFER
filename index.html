@@ -51,6 +51,14 @@ a{color:var(--accent)}
 .nav a:hover{color:var(--ink)}
 .nav a.on{color:var(--accent);padding-left:10px}
 
+[hidden]{display:none!important}
+.view-btns{display:flex;gap:8px}
+.view-btn{flex:1;font:inherit;font-weight:600;font-size:14px;padding:10px 12px;border-radius:6px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer;transition:background .15s,color .15s}
+.view-btn:hover{background:var(--accent-soft)}
+.view-btn.on{background:var(--accent);color:#fff}
+.view-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.jp-frame{display:block;width:100%;height:1400px;border:0;border-radius:6px;background:transparent}
+@media (max-width:900px){.jp-frame{height:1900px}}
 .skills{display:flex;flex-direction:column;gap:10px}
 .label{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
@@ -231,6 +239,10 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
       <span id="mail">0416moon@naver.com</span>
       <button class="copy" id="copyBtn" type="button">복사</button>
     </div>
+    <div class="view-btns">
+      <button class="view-btn on" type="button" data-view="portfolio" aria-pressed="true">포트폴리오</button>
+      <button class="view-btn" type="button" data-view="jobprep" aria-pressed="false">취업 준비</button>
+    </div>
     <nav class="nav" aria-label="섹션 이동">
       <a href="#experience">경험 <small>EXPERIENCE</small></a>
       <a href="#projects">프로젝트 <small>PROJECTS</small></a>
@@ -245,6 +257,12 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
   </aside>
 
   <main>
+    <!-- ================= 취업 준비 (버튼으로 전환) ================= -->
+    <section id="jobprep" hidden>
+      <div class="sec-head"><h2>취업 준비</h2><span class="en">JOB PREPARATION</span></div>
+      <iframe class="jp-frame" src="assignments/job-prep.html" title="취업 준비 페이지"></iframe>
+    </section>
+
     <!-- ================= 경험 ================= -->
     <section id="experience">
       <div class="sec-head"><h2>경험</h2><span class="en">EXPERIENCE</span><span class="count">경력 · 학력 · 자격증</span></div>
@@ -486,6 +504,17 @@ footer{grid-column:1/-1;font-family:var(--font-mono);font-size:12px;color:var(--
       });
     });
   });
+  var vbtns=[].slice.call(document.querySelectorAll('.view-btn'));
+  var portfolioIds=['experience','projects','assignments'];
+  function showView(v){
+    var jp=v==='jobprep';
+    portfolioIds.forEach(function(id){document.getElementById(id).hidden=jp});
+    document.getElementById('jobprep').hidden=!jp;
+    document.querySelector('.nav').hidden=jp;
+    vbtns.forEach(function(b){var on=b.dataset.view===v;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});
+    window.scrollTo(0,0);
+  }
+  vbtns.forEach(function(b){b.addEventListener('click',function(){showView(b.dataset.view)})});
   var lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap'),lastFocus=null;
   function openLb(img){var fig=img.closest('figure'),cap=fig&&fig.querySelector('figcaption');lbImg.src=img.currentSrc||img.src;lbImg.alt=img.alt;lbCap.textContent=cap?cap.textContent:'';lastFocus=document.activeElement;lb.hidden=false;document.getElementById('lbClose').focus()}
   function closeLb(){lb.hidden=true;lbImg.removeAttribute('src');if(lastFocus)lastFocus.focus()}
